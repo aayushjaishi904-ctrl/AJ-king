@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nepali Story Corner</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #222;
+}
+
+header {
+    background: #673ab7;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+nav {
+    background: #4527a0;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 12px;
+}
+
+.hero {
+    text-align: center;
+    padding: 60px 15px;
+    background: white;
+}
+
+.hero h2 {
+    color: #673ab7;
+    font-size: 30px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #ddd;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+
+button {
+    background: #673ab7;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+footer {
+    background: #4527a0;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📖 Nepali Story Corner</h1>
+    <p>कथा, कविता र साहित्यको संसारमा स्वागत छ।</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#stories">Stories</a>
+    <a href="#submit">Submit</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>Welcome to Nepali Story Corner ❤️</h2>
+    <p>आफ्ना भावना, कथा र कविताहरू यहाँ साझा गरौँ।</p>
+</section>
+
+<div class="container">
+
+    <section id="stories">
+        <h2>📚 हाम्रो कथाहरू</h2>
+
+        <div class="card">
+            <h3>जीवनको यात्रा</h3>
+            <p>जीवन एउटा सुन्दर यात्रा हो। हरेक दिन नयाँ अवसर लिएर आउँछ।</p>
+        </div>
+
+        <div class="card">
+            <h3>सपना र मेहनत</h3>
+            <p>सपना देख्नु मात्र होइन, त्यसलाई पूरा गर्न मेहनत पनि गर्नुपर्छ।</p>
+        </div>
+    </section>
+
+    <section id="submit">
+        <div class="card">
+            <h2>✍️ आफ्नो कथा लेख्नुहोस्</h2>
+
+            <input type="text" id="title" placeholder="कथाको शीर्षक">
+
+            <textarea id="story" rows="5"
+            placeholder="आफ्नो कथा यहाँ लेख्नुहोस्"></textarea>
+
+            <button onclick="addStory()">Submit Story</button>
+        </div>
+    </section>
+
+    <section id="newStories">
+        <h2>नयाँ कथाहरू</h2>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Website Developer: Aayush Jaishi</p>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Nepali Story Corner</p>
+    <p>Made with ❤️ by Aayush Jaishi</p>
+</footer>
+
+<script>
+function addStory() {
+    let title = document.getElementById("title").value;
+    let story = document.getElementById("story").value;
+
+    if (!title || !story) {
+        alert("कृपया शीर्षक र कथा दुवै लेख्नुहोस्।");
+        return;
+    }
+
+    let card = document.createElement("div");
+    card.className = "card";
+
+    let heading = document.createElement("h3");
+    heading.textContent = title;
+
+    let paragraph = document.createElement("p");
+    paragraph.textContent = story;
+
+    card.appendChild(heading);
+    card.appendChild(paragraph);
+
+    document.getElementById("newStories").appendChild(card);
+
+    document.getElementById("title").value = "";
+    document.getElementById("story").value = "";
+}
+</script>
+
+</body>
+</html>
