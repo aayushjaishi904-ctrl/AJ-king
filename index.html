@@ -1,85 +1,196 @@
-
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>नेपाली साहित्य संसार</title>
+<title>KATHA CORNER | नेपाली साहित्य संसार</title>
 
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
- margin:0;
  font-family:"Noto Sans Devanagari",Arial,sans-serif;
- background:#f4f1eb;
- color:#29251f;
+ background:#f5f2eb;
+ color:#292929;
+ transition:.3s;
 }
+
 header{
- background:linear-gradient(135deg,#172e40,#315b70);
+ background:linear-gradient(135deg,#172c43,#75502f);
  color:white;
  text-align:center;
- padding:30px 15px;
+ padding:35px 15px;
 }
-header h1{font-size:30px;margin:5px}
-header p{color:#e4eaf0}
+
+header h1{
+ font-size:34px;
+ letter-spacing:2px;
+}
+
+header p{margin-top:10px}
+
 nav{
- display:flex;flex-wrap:wrap;justify-content:center;
- background:#203c4c;gap:8px;padding:12px;
- position:sticky;top:0;z-index:5;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:10px;
+ padding:15px;
+ background:#172c43;
+ position:sticky;
+ top:0;
+ z-index:10;
 }
+
+button{
+ border:0;
+ padding:12px 17px;
+ border-radius:8px;
+ cursor:pointer;
+ font-size:15px;
+ font-weight:bold;
+}
+
 nav button{
- border:0;padding:11px 17px;border-radius:8px;
- background:#ffffff;color:#203c4c;
- cursor:pointer;font-weight:bold;
+ background:white;
+ color:#172c43;
 }
-nav button.active{background:#e7b75a;color:#222}
-.container{max-width:1050px;margin:auto;padding:20px}
-.panel{
- background:white;border-radius:13px;padding:20px;
- box-shadow:0 3px 15px #0000000c;margin-bottom:18px;
+
+nav button.active{
+ background:#e8b45c;
 }
-.stats{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:12px;margin:15px 0;
+
+.container{
+ max-width:1050px;
+ margin:auto;
+ padding:18px;
 }
-.stat{
- background:#edf3f4;padding:18px;
- border-radius:10px;text-align:center;
+
+.card{
+ background:white;
+ padding:22px;
+ border-radius:13px;
+ margin-bottom:18px;
+ box-shadow:0 3px 15px #0001;
 }
-.stat strong{display:block;font-size:25px;color:#24556a}
-select,input{
- width:100%;padding:13px;margin:7px 0;
- border:1px solid #ccc;border-radius:8px;
- font-size:16px;background:white;
+
+h2,h3{margin-bottom:15px}
+
+input,select{
+ width:100%;
+ padding:13px;
+ border:1px solid #ccc;
+ border-radius:8px;
+ margin:8px 0;
+ font-size:16px;
 }
-button{font-family:inherit}
+
 .action{
- border:0;padding:12px 17px;border-radius:8px;
- background:#24556a;color:white;cursor:pointer;
+ background:#244c65;
+ color:white;
  margin:4px;
 }
-.action:hover{opacity:.85}
-.secondary{background:#e4a943;color:#222}
+
+.gold{
+ background:#e8b45c;
+ color:#222;
+}
+
 .reader{
- background:#fffdf8;padding:25px;border-radius:12px;
- border:1px solid #e7dfd0;line-height:2;
- font-size:18px;min-height:250px;
+ background:#fffdf8;
+ border:1px solid #e5dfd3;
+ padding:30px;
+ border-radius:12px;
+ font-size:19px;
+ line-height:2.1;
+ min-height:350px;
 }
-.reader h2{text-align:center;color:#254e60}
-.reader h3{color:#9a6727}
-.reader p{text-indent:25px;margin:15px 0}
-.category-title{text-align:center;color:#244c60}
+
+.reader h2{
+ text-align:center;
+ color:#9b642e;
+}
+
+.reader p{
+ margin:17px 0;
+ text-indent:25px;
+}
+
+.chapter{
+ padding:12px;
+ margin:8px 0;
+ background:#f1eee7;
+ border-radius:8px;
+ cursor:pointer;
+}
+
+.chapter:hover{
+ background:#e8d9bd;
+}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+
+.stat{
+ background:#edf2f3;
+ padding:18px;
+ text-align:center;
+ border-radius:10px;
+}
+
+.stat strong{
+ display:block;
+ font-size:25px;
+ color:#244c65;
+}
+
 footer{
- background:#203c4c;color:white;
- text-align:center;padding:25px;margin-top:30px;
+ background:#172c43;
+ color:white;
+ text-align:center;
+ padding:30px;
+ margin-top:30px;
 }
-.small{font-size:13px;color:#777}
-.hidden{display:none}
+
+.small{
+ color:#777;
+ font-size:13px;
+}
+
+.dark{
+ background:#171717;
+ color:white;
+}
+
+.dark .card{
+ background:#292929;
+ color:white;
+}
+
+.dark .reader{
+ background:#222;
+ color:white;
+ border-color:#555;
+}
+
+.dark input,.dark select{
+ background:#333;
+ color:white;
+ border-color:#666;
+}
+
+.dark .chapter{
+ background:#444;
+ color:white;
+}
+
 @media(max-width:600px){
- header h1{font-size:23px}
+ header h1{font-size:25px}
+ .reader{padding:16px;font-size:17px}
  .container{padding:10px}
- .reader{padding:15px;font-size:16px}
- nav button{padding:9px;font-size:13px}
+ button{font-size:13px}
 }
 </style>
 </head>
@@ -87,454 +198,617 @@ footer{
 <body>
 
 <header>
- <h1>📚 नेपाली साहित्य संसार</h1>
- <p>कथा • कविता • निबन्ध • बोधकथा</p>
- <p>पढौँ, सिकौँ र नेपाली साहित्यको आनन्द लिऔँ।</p>
+<h1>📚 KATHA CORNER</h1>
+<p>नेपाली कथा • कविता • निबन्ध • बोधकथा</p>
+<p>ज्ञान, साहित्य र मनोरञ्जनको संसार</p>
 </header>
 
 <nav>
- <button class="active" onclick="changeCategory('story',this)">📖 कथा</button>
- <button onclick="changeCategory('poem',this)">🌸 कविता</button>
- <button onclick="changeCategory('essay',this)">✍️ निबन्ध</button>
- <button onclick="changeCategory('bodh',this)">💡 बोधकथा</button>
+<button class="active" onclick="changeCategory('story',this)">📖 कथा</button>
+<button onclick="changeCategory('poem',this)">🌸 कविता</button>
+<button onclick="changeCategory('essay',this)">✍️ निबन्ध</button>
+<button onclick="changeCategory('bodh',this)">💡 बोधकथा</button>
 </nav>
 
 <div class="container">
 
- <div class="panel">
-  <h2 class="category-title" id="categoryHeading">📖 कथा संग्रह</h2>
+<div class="card">
 
-  <div class="stats">
-   <div class="stat">
-    <strong>१०,०००</strong>
-    <span>प्रत्येक भागका सामग्री</span>
-   </div>
-   <div class="stat">
-    <strong>४०,०००</strong>
-    <span>कुल सामग्री</span>
-   </div>
-  </div>
+<h2 id="heading">📖 नेपाली कथा संग्रह</h2>
 
-  <label>विषय छान्नुहोस्:</label>
-  <select id="topicSelect" onchange="resetReader()"></select>
+<div class="stats">
+<div class="stat">
+<strong>१०,०००</strong>
+कथा राख्ने क्षमता
+</div>
 
-  <label>सामग्री खोज्नुहोस्:</label>
-  <input id="searchInput" placeholder="कथा, कविता, निबन्ध खोज्नुहोस्...">
-  <button class="action" onclick="searchContent()">🔍 खोज्नुहोस्</button>
+<div class="stat">
+<strong>४०,०००</strong>
+कुल सामग्रीको लक्ष्य
+</div>
+</div>
 
-  <p id="resultInfo" class="small">
-   अहिले पहिलो सामग्री देखाइएको छ।
-  </p>
- </div>
+<br>
 
- <div class="panel">
-  <h3 id="itemNumber">सामग्री नम्बर: १ / १०,०००</h3>
+<input id="search" placeholder="आफूलाई मन परेको सामग्री खोज्नुहोस्...">
 
-  <div class="reader" id="reader">
-   <h2>नेपाली साहित्य संसारमा स्वागत छ</h2>
-   <p>आफूलाई मन परेको भाग छानेर पढ्न सुरु गर्नुहोस्।</p>
-  </div>
+<button class="action" onclick="searchContent()">🔍 खोज्नुहोस्</button>
+<button class="action gold" onclick="toggleDark()">🌙 Dark Mode</button>
 
-  <div style="text-align:center;margin-top:18px">
-   <button class="action" onclick="previousItem()">⬅ अघिल्लो</button>
-   <button class="action secondary" onclick="randomItem()">🎲 अनियमित</button>
-   <button class="action" onclick="nextItem()">अर्को ➡</button>
-  </div>
+<br><br>
 
-  <div style="text-align:center;margin-top:10px">
-   <button class="action secondary" onclick="increaseFont(1)">अक्षर ठूलो +</button>
-   <button class="action secondary" onclick="increaseFont(-1)">अक्षर सानो −</button>
-   <button class="action" onclick="window.print()">🖨 प्रिन्ट</button>
-  </div>
- </div>
+<label>विषय छान्नुहोस्:</label>
+<select id="topic" onchange="loadTopic()"></select>
 
- <div class="panel">
-  <h3>📌 सामग्रीको जानकारी</h3>
-  <p id="description">
-   यहाँ विभिन्न नेपाली साहित्यिक सामग्री पढ्न सकिन्छ।
-  </p>
-  <p class="small">
-   यो वेबसाइटको प्रारम्भिक संस्करण हो। सामग्रीहरू ब्राउजरमै तयार हुन्छन्।
-  </p>
- </div>
+<p class="small" id="counter"></p>
+
+</div>
+
+<div class="card">
+
+<h3>📚 अध्याय सूची</h3>
+<div id="chapters"></div>
+
+</div>
+
+<div class="card">
+
+<div class="reader" id="reader">
+
+<h2>KATHA CORNER मा स्वागत छ</h2>
+
+<p>
+नेपाली साहित्यको संसारमा तपाईंलाई स्वागत छ।
+आफूलाई मन परेको सामग्री छानेर पढ्न सुरु गर्नुहोस्।
+</p>
+
+</div>
+
+<br>
+
+<div style="text-align:center">
+
+<button class="action" onclick="previous()">⬅ अघिल्लो</button>
+
+<button class="action gold" onclick="next()">अर्को ➡</button>
+
+</div>
+
+<div style="text-align:center;margin-top:15px">
+
+<button class="action" onclick="fontChange(2)">अक्षर ठूलो +</button>
+
+<button class="action" onclick="fontChange(-2)">अक्षर सानो −</button>
+
+<button class="action gold" onclick="favorite()">❤️ मनपर्ने</button>
+
+</div>
+
+<br>
+
+<div style="text-align:center">
+<p id="readingTime">पढ्ने समय: ० मिनेट</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>❤️ मेरा मनपर्ने सामग्री</h3>
+
+<div id="favorites">
+कुनै सामग्री सुरक्षित गरिएको छैन।
+</div>
+
+</div>
 
 </div>
 
 <footer>
- <h3>नेपाली साहित्य संसार</h3>
- <p>नेपाली भाषा, साहित्य र ज्ञानको डिजिटल पुस्तकालय।</p>
- <p>© 2026 नेपाली साहित्य संसार</p>
+
+<h2>📚 KATHA CORNER</h2>
+
+<p>नेपाली साहित्यको डिजिटल पुस्तकालय</p>
+
+<p>© 2026 Katha Corner</p>
+
 </footer>
 
 <script>
 
-// प्रत्येक भागमा १० हजार सामग्री
-const TOTAL = 10000;
+const database={
 
-const categories = {
- story:{
-  name:"📖 कथा संग्रह",
-  description:"विभिन्न विषय, पात्र र परिवेशका नेपाली कथाहरू।",
-  topics:[
-   "प्रेमकथा","भावुक कथा","पारिवारिक कथा","बालकथा",
-   "जादुई कथा","गाउँघरको कथा","मित्रताको कथा",
-   "संघर्षको कथा","प्रेरणादायी कथा","रहस्यमय कथा",
-   "राजा र रानीको कथा","गरिब केटोको कथा",
-   "आमाको माया","बाबुको संघर्ष","विद्यालयको कथा",
-   "पशुपक्षीको कथा","साहसिक कथा","ऐतिहासिक कथा",
-   "सामाजिक कथा","काल्पनिक कथा"
-  ]
- },
- poem:{
-  name:"🌸 कविता संग्रह",
-  description:"जीवन, प्रेम, प्रकृति र समाजका नेपाली कविताहरू।",
-  topics:[
-   "प्रेम कविता","आमाको कविता","बाबाको कविता",
-   "देशभक्ति कविता","प्रकृति कविता","बाल कविता",
-   "जीवन कविता","मित्रता कविता","दुःखको कविता",
-   "खुसीको कविता","विद्यालय कविता","वर्षा कविता",
-   "पहाडको कविता","गाउँको कविता","फूलको कविता",
-   "समयको कविता","सपना कविता","मानवता कविता",
-   "चाडपर्व कविता","प्रेरणादायी कविता"
-  ]
- },
- essay:{
-  name:"✍️ निबन्ध संग्रह",
-  description:"शिक्षा, स्वास्थ्य, समाज, विज्ञान र जीवनका निबन्धहरू।",
-  topics:[
-   "शिक्षाको महत्त्व","वातावरण संरक्षण","मेरो देश नेपाल",
-   "स्वास्थ्य र सरसफाइ","विज्ञान र प्रविधि",
-   "समयको महत्त्व","अनुशासन","इन्टरनेटको उपयोग",
-   "सामाजिक सञ्जाल","विद्यालय जीवन",
-   "कृषिको महत्त्व","पर्यटनको महत्त्व",
-   "वनजंगल संरक्षण","जलवायु परिवर्तन",
-   "बाल अधिकार","महिला शिक्षा","खेलकुद",
-   "मेरो गाउँ","राष्ट्रप्रेम","मानवता"
-  ]
- },
- bodh:{
-  name:"💡 बोधकथा संग्रह",
-  description:"नैतिक शिक्षा र जीवन उपयोगी सन्देश दिने बोधकथाहरू।",
-  topics:[
-   "इमानदारीको फल","मेहनतको फल","मित्रताको शक्ति",
-   "बुद्धिमानीको कथा","लोभको परिणाम","सत्यको जित",
-   "समयको सदुपयोग","आमाबाबुको सम्मान",
-   "एकताको शक्ति","दयाको महत्त्व",
-   "सहयोगको भावना","धैर्यको फल",
-   "घमण्डको परिणाम","असल व्यवहार",
-   "शिक्षाको महत्त्व","सानो सहयोग ठूलो परिणाम",
-   "वचनको महत्त्व","क्षमा र दया",
-   "असल मानिस","जीवनको पाठ"
- ]
- }
+story:{
+name:"📖 कथा संग्रह",
+topics:[
+"प्रेमकथा",
+"भावुक कथा",
+"जादुई कथा",
+"बालकथा",
+"पारिवारिक कथा",
+"गाउँघरको कथा",
+"मित्रताको कथा",
+"संघर्षको कथा",
+"रहस्यमय कथा",
+"प्रेरणादायी कथा",
+"राजा र रानीको कथा",
+"आमाको माया",
+"बाबुको संघर्ष",
+"विद्यालयको कथा",
+"साहसिक कथा",
+"ऐतिहासिक कथा",
+"सामाजिक कथा",
+"काल्पनिक कथा"
+]
+},
+
+poem:{
+name:"🌸 कविता संग्रह",
+topics:[
+"प्रेम कविता",
+"आमाको कविता",
+"बाबाको कविता",
+"देशभक्ति कविता",
+"प्रकृति कविता",
+"बाल कविता",
+"जीवन कविता",
+"मित्रता कविता",
+"दुःखको कविता",
+"खुसीको कविता",
+"विद्यालय कविता",
+"पहाडको कविता",
+"गाउँको कविता"
+]
+},
+
+essay:{
+name:"✍️ निबन्ध संग्रह",
+topics:[
+"शिक्षाको महत्त्व",
+"वातावरण संरक्षण",
+"मेरो देश नेपाल",
+"स्वास्थ्य र सरसफाइ",
+"विज्ञान र प्रविधि",
+"समयको महत्त्व",
+"अनुशासन",
+"इन्टरनेटको उपयोग",
+"विद्यालय जीवन",
+"कृषिको महत्त्व",
+"पर्यटनको महत्त्व",
+"वनजंगल संरक्षण"
+]
+},
+
+bodh:{
+name:"💡 बोधकथा संग्रह",
+topics:[
+"इमानदारीको फल",
+"मेहनतको फल",
+"मित्रताको शक्ति",
+"बुद्धिमानीको कथा",
+"लोभको परिणाम",
+"सत्यको जित",
+"एकताको शक्ति",
+"दयाको महत्त्व",
+"धैर्यको फल",
+"असल व्यवहार"
+]
+}
+
 };
 
-let currentCategory="story";
-let currentIndex=0;
-let fontSize=18;
-let searchResults=null;
+let category="story";
+let index=0;
+let chapterIndex=0;
+let fontSize=19;
 
-// फरक सामग्री बनाउन प्रयोग गरिने शब्दहरू
-const names=[
- "राम","सीता","मोहन","गीता","अर्जुन",
- "माया","सुरज","राधा","कृष्ण","सुमन",
- "आशा","निरज","कमला","विवेक","अनिता"
+function nepaliNumber(n){
+return String(n).replace(/\d/g,d=>"०१२३४५६७८९"[d]);
+}
+
+function changeCategory(type,btn){
+
+category=type;
+index=0;
+chapterIndex=0;
+
+document.querySelectorAll("nav button")
+.forEach(b=>b.classList.remove("active"));
+
+btn.classList.add("active");
+
+document.getElementById("heading").innerText=
+database[type].name;
+
+let select=document.getElementById("topic");
+
+select.innerHTML="";
+
+database[type].topics.forEach((topic,i)=>{
+
+let option=document.createElement("option");
+
+option.value=i;
+option.textContent=topic;
+
+select.appendChild(option);
+
+});
+
+showContent();
+
+}
+
+function createLongStory(chapter){
+
+let topics=database.story.topics;
+
+let titles=[
+"नयाँ सुरुवात",
+"बाल्यकालका सम्झना",
+"एउटा अनौठो भेट",
+"संघर्षको समय",
+"मायाको परीक्षा",
+"नयाँ आशा",
+"जीवनको मोड",
+"सत्यको खोजी",
+"अन्तिम निर्णय",
+"सफलताको यात्रा"
 ];
 
-const places=[
- "एउटा सुन्दर नेपाली गाउँमा",
- "पहाडको काखमा रहेको सानो बस्तीमा",
- "हरियालीले भरिएको गाउँमा",
- "एउटा रमाइलो विद्यालयमा",
- "नदीको किनारमा रहेको गाउँमा",
- "हिमालको नजिकै रहेको बस्तीमा",
- "एउटा शान्त सहरमा",
- "वनजंगलले घेरिएको गाउँमा"
+let paragraphs=[
+
+`एउटा सुन्दर नेपाली गाउँमा एउटा सानो परिवार बस्थ्यो। त्यो परिवारसँग धेरै धनसम्पत्ति थिएन, तर उनीहरूसँग माया, विश्वास र एकअर्काप्रतिको सम्मान थियो। परिवारको कान्छो सदस्यको मनमा एउटा ठूलो सपना थियो। ऊ आफ्नो गाउँ र परिवारको नाम उज्यालो बनाउन चाहन्थ्यो।`,
+
+`हरेक बिहान गाउँमा चराहरूको आवाज सुनिन्थ्यो। पहाडको काखबाट घाम उदाउँथ्यो। खेतबारीमा मानिसहरू काम गर्न जान्थे। बालबालिका विद्यालयतर्फ लाग्थे। त्यही वातावरणमा मुख्य पात्रले आफ्नो जीवनका धेरै कुरा सिक्दै गएको थियो।`,
+
+`जीवन सधैँ एउटै गतिमा अगाडि बढ्दैन। कहिले खुसी आउँछ, कहिले दुःख। कहिले मानिसले आफ्नो बाटो स्पष्ट देख्छ, कहिले अन्योलमा पर्छ। तर कठिन परिस्थितिमा पनि आशा र धैर्य कायम राख्नु महत्त्वपूर्ण हुन्छ।`,
+
+`एक दिन गाउँमा एउटा नयाँ घटना घट्यो। त्यस घटनाले धेरै मानिसको सोच परिवर्तन गरिदियो। सबैले आ-आफ्नो विचार व्यक्त गरे। मुख्य पात्रले पनि सबैको कुरा ध्यानपूर्वक सुन्यो र समस्याको समाधान खोज्न थाल्यो।`,
+
+`समय बित्दै जाँदा उसले एउटा महत्त्वपूर्ण कुरा बुझ्यो। अरूको सहयोग लिनु कमजोरी होइन। सही समयमा सही व्यक्तिसँग सल्लाह लिनु बुद्धिमानी हो। उसले आफ्नो परिवार र साथीहरूसँग मिलेर नयाँ योजना बनायो।`,
+
+`त्यसपछि उसको जीवनमा नयाँ अध्याय सुरु भयो। उसले आफ्नो लक्ष्यलाई साना-साना चरणमा विभाजन गर्‍यो। हरेक दिन केही नयाँ सिक्ने, गल्ती सुधार्ने र आफ्नो कामलाई निरन्तरता दिने निर्णय गर्‍यो।`,
+
+`गाउँका मानिसहरूले पनि उसको प्रयास देख्न थाले। कसैले प्रशंसा गरे, कसैले सुझाव दिए। उसले दुवैलाई सकारात्मक रूपमा लियो। किनकि उसलाई थाहा थियो कि सफलताको बाटोमा सिकाइ कहिल्यै समाप्त हुँदैन।`,
+
+`अन्ततः उसले आफ्नो अनुभवबाट एउटा ठूलो शिक्षा प्राप्त गर्‍यो। जीवनमा सफलता केवल ठूलो सपना देखेर प्राप्त हुँदैन। त्यसका लागि मेहनत, धैर्य, अनुशासन र असल व्यवहार आवश्यक हुन्छ।`
+
 ];
 
-const lessons=[
- "मेहनत कहिल्यै खेर जाँदैन भन्ने कुरा",
- "सत्य र इमानदारीको महत्त्व",
- "अरूलाई सहयोग गर्नु नै मानवताको चिनारी हो",
- "धैर्य राख्ने मानिसले सफलता पाउन सक्छ",
- "आमाबाबुको सम्मान गर्नु हाम्रो कर्तव्य हो",
- "ज्ञानभन्दा ठूलो सम्पत्ति अरू हुँदैन",
- "एकतामा ठूलो शक्ति हुन्छ",
- "समयको सही उपयोग गर्नुपर्छ"
+let title=titles[chapter%titles.length];
+
+let html=`<h2>${title}</h2>`;
+
+paragraphs.forEach((p,i)=>{
+
+html+=`<p>${p}</p>`;
+
+});
+
+return html;
+
+}
+
+function createPoem(){
+
+return `
+<h2>${database.poem.topics[index%database.poem.topics.length]}</h2>
+
+<p style="text-align:center">
+पहाडको काखमा घाम उदायो,<br>
+नयाँ आशाको किरण छायो।<br><br>
+
+मनभित्र सुन्दर सपना सजाऔँ,<br>
+मायाको फूल संसारमा फुलाऔँ।<br><br>
+
+आमाको माया अमूल्य हुन्छ,<br>
+बाबाको साथ जीवनको शक्ति हुन्छ।<br><br>
+
+मेहनत गर्दै अगाडि बढौँ,<br>
+सत्य र विश्वासको बाटो रोजौँ।<br><br>
+
+नेपाल हाम्रो सुन्दर घर हो,<br>
+माया र एकता हाम्रो भर हो।
+</p>
+`;
+
+}
+
+function createEssay(){
+
+let topic=database.essay.topics[index%database.essay.topics.length];
+
+return `
+<h2>${topic}</h2>
+
+<p>
+${topic} हाम्रो समाज र जीवनसँग सम्बन्धित महत्त्वपूर्ण विषय हो।
+यसले मानिसको सोच, व्यवहार र भविष्यमा प्रभाव पार्छ।
+त्यसैले यसको महत्त्व बुझ्नु आवश्यक छ।
+</p>
+
+<p>
+आजको समयमा यसको आवश्यकता झन् बढ्दै गएको छ।
+विद्यार्थी, शिक्षक, अभिभावक तथा समाजका सबै सदस्यले
+यस विषयमा सकारात्मक सोच राख्नुपर्छ।
+</p>
+
+<p>
+यससँग सम्बन्धित समस्या समाधान गर्न शिक्षा,
+सचेतना र सामूहिक प्रयास आवश्यक हुन्छ।
+हरेक व्यक्तिले आफ्नो जिम्मेवारी बुझेर काम गरेमा
+समाजमा सकारात्मक परिवर्तन ल्याउन सकिन्छ।
+</p>
+
+<p>
+अन्त्यमा भन्नुपर्दा, ${topic} हाम्रो जीवनको
+महत्त्वपूर्ण पक्ष हो। यसको सही उपयोग र संरक्षण
+गर्नु हामी सबैको कर्तव्य हो।
+</p>
+`;
+
+}
+
+function createBodh(){
+
+return `
+<h2>${database.bodh.topics[index%database.bodh.topics.length]}</h2>
+
+<p>
+एउटा गाउँमा एक जना मेहनती मानिस बस्थे।
+उनी सधैँ सत्य बोल्थे र अरूलाई सहयोग गर्थे।
+</p>
+
+<p>
+एक दिन उनले एउटा कठिन परिस्थिति सामना गर्नुपर्‍यो।
+उनका साथीहरूले उनलाई गलत बाटो रोज्न सुझाव दिए।
+तर उनले आफ्नो सिद्धान्त छोडेनन्।
+</p>
+
+<p>
+केही समयपछि उनको इमानदारीको सबैले प्रशंसा गरे।
+उनले अरूको विश्वास जित्न सफल भए।
+</p>
+
+<h3>शिक्षा:</h3>
+
+<p>
+सधैँ सत्य र इमानदारीको बाटोमा हिँड्नुपर्छ।
+असल कामको परिणाम राम्रो हुन्छ।
+</p>
+`;
+
+}
+
+function showContent(){
+
+let topic=database[category].topics[
+index%database[category].topics.length
 ];
 
-function nepaliNumber(number){
- return String(number).replace(/\d/g,d=>"०१२३४५६७८९"[d]);
+let html="";
+
+if(category==="story"){
+
+html=`
+<h2>${topic} – भाग ${nepaliNumber(chapterIndex+1)}</h2>
+`;
+
+html+=createLongStory(chapterIndex);
+
+}else if(category==="poem"){
+
+html=createPoem();
+
+}else if(category==="essay"){
+
+html=createEssay();
+
+}else{
+
+html=createBodh();
+
 }
 
-function getTopic(index){
- const list=categories[currentCategory].topics;
- return list[index % list.length];
+document.getElementById("reader").innerHTML=html;
+
+document.getElementById("reader").style.fontSize=
+fontSize+"px";
+
+document.getElementById("counter").innerText=
+"सामग्री नम्बर: "+nepaliNumber(index+1)+" / १०,०००";
+
+document.getElementById("readingTime").innerText=
+"पढ्ने समय अनुमानित: "+Math.max(1,Math.ceil(html.replace(/<[^>]*>/g,"").length/700))+" मिनेट";
+
+showChapters();
+
 }
 
-function createTitle(index){
- const topic=getTopic(index);
- const person=names[index % names.length];
- const endings=[
-  "को अनौठो यात्रा",
-  "को जीवनकथा",
-  "र एउटा नयाँ सपना",
-  "को संघर्ष",
-  "को सम्झना",
-  "र सफलताको बाटो",
-  "को प्रेरणादायी अनुभव",
-  "को सुन्दर संसार"
- ];
- return topic+" : "+person+endings[index % endings.length];
+function showChapters(){
+
+let box=document.getElementById("chapters");
+
+box.innerHTML="";
+
+if(category!=="story"){
+box.innerHTML="यो भागमा अध्याय सूची उपलब्ध छैन।";
+return;
 }
 
-function createStory(index){
- const person=names[index % names.length];
- const other=names[(index+3)%names.length];
- const place=places[index % places.length];
- const lesson=lessons[index % lessons.length];
+for(let i=0;i<10;i++){
 
- const paragraphs=[
- `${place} ${person} नाम गरेका एक पात्र बस्थे। उनको जीवनमा धेरै सपना थिए। उनी आफ्नो परिवार र समाजलाई माया गर्थे। तर उनको अगाडि धेरै चुनौतीहरू पनि थिए।`,
- `${person} सधैँ केही नयाँ सिक्न चाहन्थे। उनी बिहान उठेर आफ्नो काम गर्थे र आफ्नो लक्ष्य प्राप्त गर्न मेहनत गर्थे। कहिलेकाहीँ परिस्थिति कठिन हुन्थ्यो, तर उनी आशा छोड्दैनथे।`,
- `एक दिन उनको जीवनमा एउटा नयाँ घटना घट्यो। त्यही घटनाले उनलाई जीवनलाई फरक तरिकाले बुझ्ने अवसर दियो। उनले आफ्नो नजिकका मानिसहरूसँग सल्लाह लिए र समस्या समाधान गर्ने प्रयास गरे।`,
- `त्यसपछि उनको भेट ${other} सँग भयो। उनीहरूबीच कुराकानी भयो। दुवैले एकअर्काका विचार सुने र मिलेर अगाडि बढ्ने निर्णय गरे।`,
- `समय बित्दै जाँदा ${person} ले धेरै कुरा सिके। गल्तीबाट पाठ सिक्नु, अरूको भावना बुझ्नु र सही बाटो रोज्नु कति महत्त्वपूर्ण रहेछ भन्ने उनले महसुस गरे।`,
- `उनको यात्रामा कहिले खुसी आए, कहिले निराशा पनि आयो। तर हरेक अनुभवले उनलाई अझ परिपक्व बनाउँदै लग्यो। उनले आफ्नो परिवार, साथी र समाजको सहयोगको महत्त्व बुझे।`,
- `अन्त्यमा ${person} ले आफ्नो उद्देश्यतर्फ एउटा महत्त्वपूर्ण पाइला चाल्न सफल भए। उनको अनुभवले अरूलाई पनि राम्रो काम गर्न प्रेरित गर्‍यो।`,
- `यस कथाबाट हामीले बुझ्न सक्छौँ कि ${lesson}। जीवनमा सफलता पाउन असल सोच, निरन्तर प्रयास र धैर्य आवश्यक हुन्छ।`
- ];
+let div=document.createElement("div");
 
- // लामो पढाइका लागि विस्तारित अनुच्छेद
- for(let i=0;i<4;i++){
-  paragraphs.push(
-   `${person} को अनुभवबाट अर्को कुरा पनि सिक्न सकिन्छ। ${places[(index+i+2)%places.length]} मानिसहरूले एकअर्कालाई सम्मान गरे भने समाज अझ राम्रो बन्न सक्छ। ${lesson} भन्ने विचारलाई व्यवहारमा उतार्नु आवश्यक छ।`
-  );
- }
+div.className="chapter";
 
- return paragraphs;
+div.innerText="📖 अध्याय "+nepaliNumber(i+1);
+
+div.onclick=()=>{
+chapterIndex=i;
+showContent();
+};
+
+box.appendChild(div);
+
 }
 
-function createPoem(index){
- const topic=getTopic(index);
- const person=names[index%names.length];
-
- const verses=[
-  `${topic} जीवनको एउटा मीठो भाव हो,`,
-  `मनभित्र लुकेको सुन्दर स्वभाव हो।`,
-  `सपनाको बाटोमा अघि बढ्दै जाऊ,`,
-  `आशाको उज्यालो सधैँ मनमा सजाऊ।`,
-  ``,
-  `${person} का आँखामा नयाँ सपना छन्,`,
-  `मनभित्र हजारौँ मीठा भावना छन्।`,
-  `समयसँगै जीवन बदलिँदै जान्छ,`,
-  `मेहनत गर्ने मनले लक्ष्य पहिल्याउँछ।`,
-  ``,
-  `फूलझैँ मुस्कान संसारमा छरौँ,`,
-  `मायाले सबैको मन जोड्दै अघि बढौँ।`,
-  `सत्यको बाटो कहिल्यै नछोडौँ,`,
-  `असल कर्मले सुन्दर भविष्य जोडौँ।`,
-  ``,
-  `जीवन छोटो छ, सपना ठूला छन्,`,
-  `आशाका किरणहरू अझै खुला छन्।`,
-  `आजको प्रयास भोलिको आधार बनोस्,`,
-  `हरेक मनमा खुसीको संसार बसोस्।`
- ];
-
- return verses;
 }
 
-function createEssay(index){
- const topic=getTopic(index);
- const person=names[index%names.length];
+function loadTopic(){
 
- return [
-  `${topic} हाम्रो जीवनसँग जोडिएको महत्त्वपूर्ण विषय हो। यसले व्यक्ति, परिवार र समाजमा ठूलो प्रभाव पार्छ। कुनै पनि विषयलाई राम्रोसँग बुझ्न त्यसको अर्थ, आवश्यकता र उपयोगिताबारे जानकारी हुनु आवश्यक छ।`,
-  `यस विषयको महत्त्व हाम्रो दैनिक जीवनमा देख्न सकिन्छ। मानिसले आफ्नो व्यवहार र सोचमा सकारात्मक परिवर्तन ल्याउन सके समाजमा पनि राम्रो प्रभाव पर्न सक्छ।`,
-  `${person} जस्ता विद्यार्थी तथा युवाहरूले यस विषयलाई बुझेर व्यवहारमा लागू गर्नुपर्छ। ज्ञान प्राप्त गर्नु मात्र पर्याप्त हुँदैन, त्यसलाई सही तरिकाले प्रयोग गर्नु पनि आवश्यक हुन्छ।`,
-  `यसका केही चुनौतीहरू पनि छन्। जानकारीको अभाव, लापरवाही र गलत सोचले समस्या निम्त्याउन सक्छ। त्यसैले परिवार, विद्यालय र समाजले मिलेर सकारात्मक वातावरण बनाउनुपर्छ।`,
-  `यस विषयमा सरकार, शिक्षक, अभिभावक र नागरिक सबैको भूमिका महत्त्वपूर्ण हुन्छ। सबैले आफ्नो जिम्मेवारी पूरा गरेमा राम्रो परिवर्तन सम्भव हुन्छ।`,
-  `अन्त्यमा भन्नुपर्दा, ${topic} हाम्रो वर्तमान र भविष्य दुवैका लागि उपयोगी विषय हो। हामी सबैले यसको महत्त्व बुझेर आफ्नो जीवनमा सकारात्मक व्यवहार अपनाउनुपर्छ।`
- ];
+index=Number(document.getElementById("topic").value);
+
+chapterIndex=0;
+
+showContent();
+
 }
 
-function createBodh(index){
- const person=names[index%names.length];
- const other=names[(index+4)%names.length];
- const lesson=lessons[index%lessons.length];
+function next(){
 
- return [
-  `धेरै पहिलेको कुरा हो। ${places[index%places.length]} ${person} नाम गरेका एक व्यक्ति बस्थे। उनी सामान्य जीवन बिताउँथे र आफ्नो परिवारलाई माया गर्थे।`,
-  `उनको साथी ${other} थिए। उनीहरू सँगै काम गर्थे र एकअर्कालाई सहयोग गर्थे। तर एक दिन उनीहरूको अगाडि एउटा समस्या आयो।`,
-  `${person} ले हतारमा निर्णय नगरी समस्याबारे राम्रोसँग सोच्ने विचार गरे। उनले सबैको कुरा सुने र समाधान खोज्न थाले।`,
-  `केही समयपछि उनीहरूले मिलेर एउटा राम्रो उपाय निकाले। उनीहरूको धैर्य, समझदारी र सहयोगले समस्या समाधान भयो।`,
-  `त्यस दिन उनीहरूले एउटा ठूलो कुरा सिके। मानिसले कठिन परिस्थितिमा पनि सही सोच र असल व्यवहार अपनाउनुपर्छ।`,
-  `यस कथाबाट प्राप्त शिक्षा: ${lesson}।`
- ];
+if(category==="story" && chapterIndex<9){
+chapterIndex++;
+}else{
+index=(index+1)%10000;
+chapterIndex=0;
 }
 
-function getContent(index){
- const topic=getTopic(index);
- const title=createTitle(index);
- let paragraphs=[];
+showContent();
 
- if(currentCategory==="story"){
-  paragraphs=createStory(index);
- }
- if(currentCategory==="poem"){
-  paragraphs=createPoem(index);
- }
- if(currentCategory==="essay"){
-  paragraphs=createEssay(index);
- }
- if(currentCategory==="bodh"){
-  paragraphs=createBodh(index);
- }
-
- return {topic,title,paragraphs};
 }
 
-function render(){
- const data=getContent(currentIndex);
- const reader=document.getElementById("reader");
+function previous(){
 
- let html=`<h2>${data.title}</h2>`;
- html+=`<p style="text-align:center;color:#98733e">
- विषय: ${data.topic}
- </p>`;
-
- if(currentCategory==="poem"){
-  html+=`<div style="text-align:center;white-space:pre-line;line-height:2.2">`;
-  html+=data.paragraphs.join("\n");
-  html+=`</div>`;
- }else{
-  data.paragraphs.forEach((p,i)=>{
-   html+=`<p>${p}</p>`;
-  });
- }
-
- html+=`<h3 style="text-align:center">— समाप्त —</h3>`;
-
- reader.innerHTML=html;
- reader.style.fontSize=fontSize+"px";
-
- document.getElementById("itemNumber").innerText=
- "सामग्री नम्बर: "+nepaliNumber(currentIndex+1)+
- " / "+nepaliNumber(TOTAL);
-
- document.getElementById("description").innerText=
- categories[currentCategory].description+
- " | विषय: "+data.topic;
-
- document.getElementById("resultInfo").innerText=
- "हाल देखाइएको सामग्री: "+nepaliNumber(currentIndex+1);
-
- window.scrollTo({top:0,behavior:"smooth"});
+if(category==="story" && chapterIndex>0){
+chapterIndex--;
+}else{
+index=(index-1+10000)%10000;
+chapterIndex=0;
 }
 
-function changeCategory(category,button){
- currentCategory=category;
- currentIndex=0;
- searchResults=null;
+showContent();
 
- document.querySelectorAll("nav button").forEach(b=>{
-  b.classList.remove("active");
- });
- button.classList.add("active");
-
- document.getElementById("categoryHeading").innerText=
- categories[category].name;
-
- document.getElementById("searchInput").value="";
- loadTopics();
- render();
 }
 
-function loadTopics(){
- const select=document.getElementById("topicSelect");
- select.innerHTML="";
+function random(){
 
- categories[currentCategory].topics.forEach((topic,index)=>{
-  const option=document.createElement("option");
-  option.value=index;
-  option.textContent=topic;
-  select.appendChild(option);
- });
+index=Math.floor(Math.random()*10000);
+chapterIndex=0;
+
+showContent();
+
 }
 
-function resetReader(){
- const topicIndex=Number(document.getElementById("topicSelect").value);
- currentIndex=topicIndex;
- searchResults=null;
- render();
+function fontChange(amount){
+
+fontSize=Math.max(14,Math.min(32,fontSize+amount));
+
+showContent();
+
 }
 
-function nextItem(){
- if(currentIndex<TOTAL-1){
-  currentIndex++;
- }else{
-  currentIndex=0;
- }
- render();
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
 }
 
-function previousItem(){
- if(currentIndex>0){
-  currentIndex--;
- }else{
-  currentIndex=TOTAL-1;
- }
- render();
+function favorite(){
+
+let saved=JSON.parse(
+localStorage.getItem("kathaFavorites")||"[]"
+);
+
+let item={
+category:category,
+index:index,
+chapter:chapterIndex
+};
+
+let key=JSON.stringify(item);
+
+if(!saved.some(x=>JSON.stringify(x)===key)){
+saved.push(item);
 }
 
-function randomItem(){
- currentIndex=Math.floor(Math.random()*TOTAL);
- render();
+localStorage.setItem("kathaFavorites",JSON.stringify(saved));
+
+showFavorites();
+
+alert("मनपर्ने सामग्री सुरक्षित भयो।");
+
+}
+
+function showFavorites(){
+
+let saved=JSON.parse(
+localStorage.getItem("kathaFavorites")||"[]"
+);
+
+let box=document.getElementById("favorites");
+
+if(!saved.length){
+box.innerText="कुनै सामग्री सुरक्षित गरिएको छैन।";
+return;
+}
+
+box.innerHTML="";
+
+saved.forEach(item=>{
+
+let p=document.createElement("p");
+
+p.innerText=
+database[item.category].name+
+" – सामग्री नम्बर "+
+nepaliNumber(item.index+1);
+
+box.appendChild(p);
+
+});
+
 }
 
 function searchContent(){
- const query=document.getElementById("searchInput")
- .value.trim().toLowerCase();
 
- if(!query){
-  alert("कृपया खोज्ने शब्द लेख्नुहोस्।");
-  return;
- }
+let query=document.getElementById("search")
+.value.trim().toLowerCase();
 
- let found=-1;
-
- for(let i=0;i<TOTAL;i++){
-  const data=getContent(i);
-  const searchable=(
-   data.title+" "+data.topic+" "+data.paragraphs.join(" ")
-  ).toLowerCase();
-
-  if(searchable.includes(query)){
-   found=i;
-   break;
-  }
- }
-
- if(found>=0){
-  currentIndex=found;
-  render();
-  document.getElementById("resultInfo").innerText=
-   "खोजिएको सामग्री भेटियो।";
- }else{
-  alert("माफ गर्नुहोस्, यो शब्दसँग मिल्ने सामग्री भेटिएन।");
- }
+if(!query){
+alert("खोज्ने शब्द लेख्नुहोस्।");
+return;
 }
 
-function increaseFont(amount){
- fontSize=Math.max(13,Math.min(30,fontSize+amount));
- document.getElementById("reader").style.fontSize=
- fontSize+"px";
+let topics=database[category].topics;
+
+let found=topics.findIndex(t=>
+t.toLowerCase().includes(query)
+);
+
+if(found!==-1){
+
+index=found;
+chapterIndex=0;
+
+document.getElementById("topic").value=found;
+
+showContent();
+
+}else{
+
+alert("मिल्दो विषय भेटिएन।");
+
 }
 
-// सुरु गर्दा कथा संग्रह खोल्ने
-loadTopics();
-render();
+}
+
+changeCategory("story",document.querySelector("nav button"));
+
+showFavorites();
 
 </script>
+
 </body>
 </html>
