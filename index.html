@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nepali Story Corner</title>
+<title>नेपाली स्टोरी कर्नर</title>
 
 <style>
 * {
@@ -22,16 +22,12 @@ body {
 header {
     background: #172554;
     color: white;
-    padding: 25px 15px;
     text-align: center;
+    padding: 25px 10px;
 }
 
 header h1 {
     font-size: 28px;
-}
-
-header p {
-    margin-top: 8px;
 }
 
 nav {
@@ -44,7 +40,6 @@ nav a {
     color: white;
     text-decoration: none;
     margin: 10px;
-    font-weight: bold;
 }
 
 .hero {
@@ -55,18 +50,16 @@ nav a {
 }
 
 .hero h2 {
-    font-size: 30px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .search {
-    margin-top: 20px;
-    padding: 14px;
     width: 90%;
     max-width: 450px;
+    padding: 14px;
     border: none;
     border-radius: 25px;
-    font-size: 16px;
+    margin-top: 20px;
 }
 
 .container {
@@ -77,8 +70,8 @@ nav a {
 
 .title {
     text-align: center;
-    margin-bottom: 25px;
     color: #1e3a8a;
+    margin-bottom: 25px;
 }
 
 .categories {
@@ -89,18 +82,23 @@ nav a {
     margin-bottom: 25px;
 }
 
-.categories button {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 20px;
-    background: #1e3a8a;
-    color: white;
+button {
     cursor: pointer;
+}
+
+.categories button,
+.btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
     gap: 20px;
 }
 
@@ -113,11 +111,11 @@ nav a {
 
 .thumbnail {
     height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 65px;
     background: linear-gradient(120deg,#60a5fa,#c084fc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
 }
 
 .content {
@@ -134,57 +132,50 @@ nav a {
 }
 
 .btn {
-    padding: 10px 16px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    margin-top: 15px;
-    cursor: pointer;
+    margin-top: 12px;
 }
 
-.btn:hover {
-    background: #172554;
+.favorite {
+    background: #e11d48;
 }
 
 #reader {
     display: none;
     background: white;
     padding: 25px;
-    border-radius: 12px;
     margin-top: 25px;
+    border-radius: 12px;
     box-shadow: 0 3px 12px #0002;
 }
 
-#reader h2 {
-    color: #1e3a8a;
-    margin-bottom: 18px;
-}
-
 #storyText {
+    white-space: pre-line;
     font-size: 18px;
     line-height: 2;
-    white-space: pre-line;
+    margin-top: 20px;
 }
 
 .reader-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 20px;
 }
 
 .about {
     background: white;
-    padding: 30px;
     text-align: center;
+    padding: 30px;
+    margin-top: 30px;
     border-radius: 12px;
-    margin-top: 35px;
     line-height: 1.8;
 }
 
 footer {
     background: #172554;
     color: white;
-    padding: 25px;
     text-align: center;
+    padding: 25px;
     margin-top: 40px;
 }
 
@@ -194,28 +185,27 @@ footer {
 <body>
 
 <header>
-    <h1>📚 Nepali Story Corner</h1>
+    <h1>📚 नेपाली स्टोरी कर्नर</h1>
     <p>नेपाली कथा र कार्टुनको संसार</p>
 </header>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#stories">Stories</a>
-    <a href="#cartoon">Cartoon</a>
-    <a href="#about">About</a>
+    <a href="#home">गृहपृष्ठ</a>
+    <a href="#stories">कथाहरू</a>
+    <a href="#cartoon">कार्टुन</a>
+    <a href="#about">हाम्रो बारेमा</a>
 </nav>
 
 <section class="hero" id="home">
 
-    <h2>स्वागत छ नेपाली Story Corner मा!</h2>
+    <h2>नेपाली स्टोरी कर्नरमा स्वागत छ!</h2>
 
-    <p>रमाइला नेपाली कथा पढ्नुहोस् र सुन्नुहोस्।</p>
+    <p>कथा पढ्नुहोस्, सुन्नुहोस् र रमाइलो गर्नुहोस्।</p>
 
     <input
         class="search"
         id="search"
-        type="search"
-        placeholder="कथा खोज्नुहोस्..."
+        placeholder="यहाँ कथा खोज्नुहोस्..."
         oninput="searchStories()"
     >
 
@@ -223,11 +213,13 @@ footer {
 
 <div class="container" id="stories">
 
-    <h2 class="title">🌟 नेपाली कथाहरू</h2>
+    <h2 class="title">🌟 हाम्रा नेपाली कथाहरू</h2>
 
     <div class="categories">
 
-        <button onclick="filterStories('all')">सबै</button>
+        <button onclick="filterStories('all')">
+            सबै
+        </button>
 
         <button onclick="filterStories('story')">
             नेपाली कथा
@@ -253,11 +245,16 @@ footer {
 
                 <h3>जादुई चरा</h3>
 
-                <p>गरिब केटो र जादुई चराको सुन्दर कथा।</p>
+                <p>गरिब केटो र जादुई चराको कथा।</p>
 
                 <button class="btn"
-                    onclick="readStory('bird')">
+                onclick="readStory('bird')">
                     कथा पढ्नुहोस्
+                </button>
+
+                <button class="btn favorite"
+                onclick="favoriteStory('जादुई चरा')">
+                    ❤️
                 </button>
 
             </div>
@@ -271,11 +268,16 @@ footer {
 
                 <h3>इमानदार बालक</h3>
 
-                <p>इमानदारी र मेहनतको महत्त्व सिकाउने कथा।</p>
+                <p>इमानदारीको महत्त्व सिकाउने कथा।</p>
 
                 <button class="btn"
-                    onclick="readStory('boy')">
+                onclick="readStory('boy')">
                     कथा पढ्नुहोस्
+                </button>
+
+                <button class="btn favorite"
+                onclick="favoriteStory('इमानदार बालक')">
+                    ❤️
                 </button>
 
             </div>
@@ -289,11 +291,16 @@ footer {
 
                 <h3>सिंह र मुसा</h3>
 
-                <p>सानो सहयोगको ठूलो महत्त्व बताउने कथा।</p>
+                <p>सानो सहयोगको ठूलो महत्त्व।</p>
 
                 <button class="btn"
-                    onclick="readStory('lion')">
+                onclick="readStory('lion')">
                     कथा पढ्नुहोस्
+                </button>
+
+                <button class="btn favorite"
+                onclick="favoriteStory('सिंह र मुसा')">
+                    ❤️
                 </button>
 
             </div>
@@ -307,10 +314,10 @@ footer {
 
                 <h3>नेपाली कार्टुन</h3>
 
-                <p>बालबालिकाका लागि रमाइला भिडियो।</p>
+                <p>नेपाली कार्टुन भिडियोहरू हेर्नुहोस्।</p>
 
                 <button class="btn"
-                    onclick="openCartoon()">
+                onclick="openCartoon()">
                     भिडियो हेर्नुहोस्
                 </button>
 
@@ -319,8 +326,9 @@ footer {
 
     </div>
 
-    <p id="noResults" style="display:none;text-align:center;padding:20px;">
-        कथा भेटिएन।
+    <p id="noResults"
+       style="display:none;text-align:center;margin-top:20px;">
+       कुनै कथा भेटिएन।
     </p>
 
     <div id="reader">
@@ -336,7 +344,7 @@ footer {
             </button>
 
             <button class="btn" onclick="stopSpeech()">
-                आवाज रोक्नुहोस्
+                ⏹️ आवाज रोक्नुहोस्
             </button>
 
             <button class="btn" onclick="closeStory()">
@@ -349,9 +357,9 @@ footer {
 
     <section class="about" id="cartoon">
 
-        <h2>🎬 Cartoon Videos</h2>
+        <h2>🎬 नेपाली कार्टुन भिडियो</h2>
 
-        <p>यहाँ नेपाली कार्टुन भिडियोहरू राख्न सकिन्छ।</p>
+        <p>यहाँ नेपाली कार्टुन भिडियोहरू हेर्न सक्नुहुन्छ।</p>
 
     </section>
 
@@ -360,10 +368,10 @@ footer {
         <h2>हाम्रो बारेमा</h2>
 
         <p>
-        Nepali Story Corner नेपाली कथा, बालकथा,
-        कार्टुन र मनोरञ्जनका लागि बनाइएको वेबसाइट हो।
-        हाम्रो उद्देश्य नेपाली भाषा र संस्कृतिलाई
-        डिजिटल माध्यमबाट अगाडि बढाउनु हो।
+        नेपाली स्टोरी कर्नर नेपाली कथा, बालकथा,
+        कार्टुन चलचित्र र कविताहरूको डिजिटल संसार हो।
+        हाम्रो उद्देश्य नेपाली भाषा र संस्कृतिको
+        संरक्षण तथा प्रवर्द्धन गर्नु हो।
         </p>
 
     </section>
@@ -371,13 +379,9 @@ footer {
 </div>
 
 <footer>
-
-    <h3>📚 Nepali Story Corner</h3>
-
-    <p>Made with ❤️ in Nepal</p>
-
-    <p>© 2026 Nepali Story Corner</p>
-
+    <h3>📚 नेपाली स्टोरी कर्नर</h3>
+    <p>नेपालमा बनेको ❤️</p>
+    <p>© 2026 नेपाली स्टोरी कर्नर</p>
 </footer>
 
 <script>
@@ -386,64 +390,53 @@ const stories = {
 
 bird: {
 title: "जादुई चरा",
-text: `एक गाउँमा एउटा गरिब केटो बस्थ्यो।
-उसको नाम राम थियो।
+text: `एउटा गाउँमा राम नामको गरिब केटो बस्थ्यो।
 
-एक दिन राम जंगलमा दाउरा खोज्न गयो।
-त्यहाँ उसले एउटा सुन्दर चरा भेट्टायो।
+एक दिन ऊ जंगलमा दाउरा खोज्न गयो।
+त्यहाँ उसले एउटा घाइते चरा भेट्टायो।
 
-चरा घाइते भएको थियो।
 रामले चरालाई घरमा ल्याएर हेरचाह गर्‍यो।
-
 केही दिनपछि चरा निको भयो।
 
-चराले भन्यो, "राम, तिमीले मेरो सहयोग गर्‍यौ।
-अब म तिमीलाई एउटा उपहार दिन्छु।"
+चराले रामलाई भन्यो,
+तिमीले मलाई सहयोग गर्‍यौ,
+अब म तिमीलाई एउटा उपहार दिन्छु।
 
 चराले रामलाई जादुई बीउ दियो।
 रामले त्यो बीउ रोप्यो।
 
-केही समयपछि त्यहाँ सुनका फल लागे।
-राम खुसी भयो।
+केही समयपछि त्यसमा सुनका फल लागे।
+रामले ती फल बेचेर गाउँका गरिब मानिसहरूलाई सहयोग गर्‍यो।
 
-उसले गाउँका गरिब मानिसहरूलाई पनि सहयोग गर्‍यो।
-
-शिक्षा: अरूलाई सहयोग गर्नु नै सबैभन्दा ठूलो धर्म हो।`
+शिक्षा: अरूलाई सहयोग गर्नु राम्रो काम हो।`
 },
 
 boy: {
 title: "इमानदार बालक",
-text: `एउटा गाउँमा मोहन नामको बालक बस्थ्यो।
+text: `मोहन नामको एउटा बालक विद्यालय जाँदै थियो।
 
-एक दिन विद्यालय जाँदै गर्दा उसले बाटोमा एउटा पर्स भेट्टायो।
+उसले बाटोमा एउटा पर्स भेट्टायो।
+त्यस पर्समा पैसा र परिचयपत्र थियो।
 
-पर्सभित्र पैसा र परिचयपत्र थियो।
-
-मोहनले पर्स आफ्नो शिक्षकलाई बुझायो।
-
+मोहनले त्यो पर्स आफ्नो शिक्षकलाई बुझायो।
 शिक्षकले पर्सको मालिक पत्ता लगाए।
 
-मालिकले मोहनलाई धन्यवाद दिए।
-
-शिक्षकले भने, "तिमी साँच्चै इमानदार बालक हौ।"
+पर्सको मालिकले मोहनलाई धन्यवाद दिए।
 
 शिक्षा: सधैँ इमानदार बन्नुपर्छ।`
 },
 
 lion: {
 title: "सिंह र मुसा",
-text: `एक दिन जंगलमा एउटा सिंह सुतिरहेको थियो।
+text: `एउटा जंगलमा ठूलो सिंह बस्थ्यो।
 
-एउटा सानो मुसा त्यहाँ खेल्दै थियो।
-
-मुसा सिंहमाथि पुग्यो।
-सिंह ब्युँझियो।
-
+एक दिन एउटा सानो मुसाले सिंहलाई ब्युँझायो।
 सिंहले मुसालाई समात्यो।
+
 मुसाले आफूलाई छोडिदिन आग्रह गर्‍यो।
+सिंहले मुसालाई छोडिदियो।
 
 केही दिनपछि सिंह सिकारीको जालमा पर्‍यो।
-
 मुसाले आफ्नो दाँतले जाल काटिदियो।
 
 सिंह स्वतन्त्र भयो।
@@ -455,9 +448,11 @@ text: `एक दिन जंगलमा एउटा सिंह सुत�
 
 function readStory(id) {
 
-    let story = stories[id];
+    const story = stories[id];
 
     if (!story) return;
+
+    stopSpeech();
 
     document.getElementById("storyTitle").innerText =
         story.title;
@@ -486,15 +481,16 @@ function closeStory() {
 function speakStory() {
 
     if (!("speechSynthesis" in window)) {
-        alert("यो Browser मा आवाज सुविधा उपलब्ध छैन।");
+        alert("तपाईंको ब्राउजरमा आवाज सुविधा उपलब्ध छैन।");
         return;
     }
 
     stopSpeech();
 
-    let text = document.getElementById("storyText").innerText;
+    const text =
+        document.getElementById("storyText").innerText;
 
-    let speech = new SpeechSynthesisUtterance(text);
+    const speech = new SpeechSynthesisUtterance(text);
 
     speech.lang = "ne-NP";
     speech.rate = 0.85;
@@ -513,19 +509,28 @@ function stopSpeech() {
 
 function filterStories(category) {
 
-    let cards = document.querySelectorAll(".card");
+    stopSpeech();
+
+    const cards = document.querySelectorAll(".card");
+
+    let count = 0;
 
     cards.forEach(card => {
 
-        card.style.display =
+        const show =
             category === "all" ||
-            card.dataset.category === category
-            ? "block" : "none";
+            card.dataset.category === category;
+
+        card.style.display = show ? "block" : "none";
+
+        if (show) count++;
 
     });
 
+    document.getElementById("reader").style.display = "none";
+
     document.getElementById("noResults").style.display =
-        "none";
+        count === 0 ? "block" : "none";
 
     document.getElementById("search").value = "";
 
@@ -533,17 +538,18 @@ function filterStories(category) {
 
 function searchStories() {
 
-    let value = document
-        .getElementById("search")
-        .value.toLowerCase();
+    stopSpeech();
 
-    let cards = document.querySelectorAll(".card");
+    const value =
+        document.getElementById("search").value.toLowerCase();
+
+    const cards = document.querySelectorAll(".card");
 
     let count = 0;
 
     cards.forEach(card => {
 
-        let match =
+        const match =
             card.innerText.toLowerCase().includes(value);
 
         card.style.display = match ? "block" : "none";
@@ -557,9 +563,33 @@ function searchStories() {
 
 }
 
+function favoriteStory(name) {
+
+    let favorites =
+        JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    if (favorites.includes(name)) {
+        alert("यो कथा पहिले नै मनपर्नेमा छ।");
+        return;
+    }
+
+    favorites.push(name);
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
+
+    alert(name + " मनपर्ने कथामा थपियो।");
+
+}
+
 function openCartoon() {
 
-    alert("यहाँ आफ्नो YouTube Cartoon Video Link थप्नुहोस्।");
+    window.open(
+        "https://www.youtube.com/results?search_query=Nepali+Cartoon",
+        "_blank"
+    );
 
 }
 
