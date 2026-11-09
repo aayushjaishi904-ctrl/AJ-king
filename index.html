@@ -3,597 +3,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>नेपाली स्टोरी कर्नर</title>
-
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Devanagari",Arial,sans-serif;background:#f5f7fb;color:#222}
+header{background:linear-gradient(120deg,#512da8,#1565c0);color:white;padding:28px 15px;text-align:center}
+header h1{margin:0;font-size:30px}
+header p{margin:10px 0 0}
+nav{background:#34206d;display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:12px}
+nav button{background:transparent;border:1px solid #fff;color:white;padding:9px 14px;border-radius:20px;cursor:pointer}
+nav button:hover{background:white;color:#34206d}
+.container{max-width:1100px;margin:auto;padding:18px}
+.welcome{background:white;padding:20px;border-radius:14px;text-align:center;box-shadow:0 3px 12px #0001}
+.search{width:100%;padding:13px;border:1px solid #ccc;border-radius:9px;font-size:16px;margin:18px 0}
+.categories{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.categories button,.action{border:0;background:#512da8;color:white;padding:10px 14px;border-radius:8px;cursor:pointer}
+.categories button:hover,.action:hover{background:#1565c0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:white;border-radius:13px;padding:17px;box-shadow:0 3px 12px #0001}
+.card h3{color:#4527a0;margin-top:5px}
+.card p{line-height:1.8}
+.card button{margin:4px 3px 4px 0}
+.tag{font-size:13px;color:#777}
+.reader{display:none;background:white;padding:22px;border-radius:13px;margin:20px 0;box-shadow:0 3px 12px #0002}
+.reader h2{color:#4527a0}
+.story-text{white-space:pre-line;line-height:2;font-size:17px}
+footer{text-align:center;background:#25164e;color:white;padding:25px;margin-top:35px}
+a{color:#1565c0}
+.hidden{display:none}
+@media(max-width:600px){
+header h1{font-size:24px}
+.container{padding:12px}
+.story-text{font-size:16px}
 }
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6fb;
-    color: #222;
-}
-
-header {
-    background: #172554;
-    color: white;
-    text-align: center;
-    padding: 25px 10px;
-}
-
-header h1 {
-    font-size: 28px;
-}
-
-nav {
-    background: #1e3a8a;
-    padding: 15px;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 10px;
-}
-
-.hero {
-    background: linear-gradient(120deg,#2563eb,#9333ea);
-    color: white;
-    text-align: center;
-    padding: 55px 15px;
-}
-
-.hero h2 {
-    margin-bottom: 15px;
-}
-
-.search {
-    width: 90%;
-    max-width: 450px;
-    padding: 14px;
-    border: none;
-    border-radius: 25px;
-    margin-top: 20px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 30px 15px;
-}
-
-.title {
-    text-align: center;
-    color: #1e3a8a;
-    margin-bottom: 25px;
-}
-
-.categories {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-button {
-    cursor: pointer;
-}
-
-.categories button,
-.btn {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 11px 18px;
-    border-radius: 8px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(230px,1fr));
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px #0002;
-}
-
-.thumbnail {
-    height: 150px;
-    background: linear-gradient(120deg,#60a5fa,#c084fc);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 65px;
-}
-
-.content {
-    padding: 18px;
-}
-
-.content h3 {
-    margin-bottom: 10px;
-}
-
-.content p {
-    color: #666;
-    line-height: 1.6;
-}
-
-.btn {
-    margin-top: 12px;
-}
-
-.favorite {
-    background: #e11d48;
-}
-
-#reader {
-    display: none;
-    background: white;
-    padding: 25px;
-    margin-top: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px #0002;
-}
-
-#storyText {
-    white-space: pre-line;
-    font-size: 18px;
-    line-height: 2;
-    margin-top: 20px;
-}
-
-.reader-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.about {
-    background: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 30px;
-    border-radius: 12px;
-    line-height: 1.8;
-}
-
-footer {
-    background: #172554;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-}
-
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>📚 नेपाली स्टोरी कर्नर</h1>
-    <p>नेपाली कथा र कार्टुनको संसार</p>
+<h1>📚 नेपाली स्टोरी कर्नर</h1>
+<p>नेपाली कथा, बालकथा, कविता र कार्टुनको रमाइलो संसार</p>
 </header>
 
 <nav>
-    <a href="#home">गृहपृष्ठ</a>
-    <a href="#stories">कथाहरू</a>
-    <a href="#cartoon">कार्टुन</a>
-    <a href="#about">हाम्रो बारेमा</a>
+<button onclick="showSection('home')">🏠 Home</button>
+<button onclick="filterCategory('कथा')">📖 नेपाली कथा</button>
+<button onclick="filterCategory('बालकथा')">👦 बालकथा</button>
+<button onclick="filterCategory('कविता')">📝 नेपाली कविता</button>
+<button onclick="showCartoons()">🎬 Cartoon</button>
+<button onclick="showFavorites()">❤️ मनपर्ने</button>
 </nav>
 
-<section class="hero" id="home">
+<div class="container">
 
-    <h2>नेपाली स्टोरी कर्नरमा स्वागत छ!</h2>
+<section id="home">
+<div class="welcome">
+<h2>🙏 नेपाली स्टोरी कर्नरमा स्वागत छ!</h2>
+<p>यहाँ नेपाली कथा पढ्नुहोस्, आवाजमा सुन्नुहोस् र रमाइला कार्टुन भिडियो खोज्नुहोस्।</p>
+</div>
 
-    <p>कथा पढ्नुहोस्, सुन्नुहोस् र रमाइलो गर्नुहोस्।</p>
+<input class="search" id="searchBox" oninput="searchStories()" placeholder="🔍 कथा वा कविता खोज्नुहोस्...">
 
-    <input
-        class="search"
-        id="search"
-        placeholder="यहाँ कथा खोज्नुहोस्..."
-        oninput="searchStories()"
-    >
+<div class="categories">
+<button onclick="filterCategory('सबै')">सबै सामग्री</button>
+<button onclick="filterCategory('कथा')">नेपाली कथा</button>
+<button onclick="filterCategory('बालकथा')">बालकथा</button>
+<button onclick="filterCategory('कविता')">कविता</button>
+</div>
 
+<h2>🌟 हाम्रा कथाहरू र कविताहरू</h2>
+<div class="grid" id="storyList"></div>
 </section>
 
-<div class="container" id="stories">
+<section id="reader" class="reader">
+<button class="action" onclick="goHome()">⬅ पछाडि जानुहोस्</button>
+<h2 id="readerTitle"></h2>
+<p class="tag" id="readerCategory"></p>
+<div class="story-text" id="readerText"></div>
+<br>
+<button class="action" onclick="speakStory()">🔊 कथा सुन्नुहोस्</button>
+<button class="action" onclick="pauseSpeech()">⏸ रोक्नुहोस्</button>
+<button class="action" onclick="resumeSpeech()">▶ फेरि सुन्नुहोस्</button>
+<button class="action" onclick="stopSpeech()">⏹ बन्द गर्नुहोस्</button>
+</section>
 
-    <h2 class="title">🌟 हाम्रा नेपाली कथाहरू</h2>
+<section id="cartoons" class="reader">
+<button class="action" onclick="goHome()">⬅ पछाडि</button>
+<h2>🎬 नेपाली कार्टुन भिडियो</h2>
+<p>तलको बटन थिचेर YouTube मा नेपाली कार्टुन खोज्न सक्नुहुन्छ।</p>
+<div class="grid">
+<div class="card">
+<h3>🐦 नेपाली बाल कार्टुन</h3>
+<p>बालबालिकाका लागि रमाइला कार्टुन।</p>
+<button class="action" onclick="youtube('नेपाली बाल कार्टुन')">भिडियो हेर्नुहोस्</button>
+</div>
+<div class="card">
+<h3>📖 नेपाली कथाका कार्टुन</h3>
+<p>नेपाली कथामा आधारित कार्टुन भिडियो।</p>
+<button class="action" onclick="youtube('नेपाली कथा कार्टुन')">भिडियो हेर्नुहोस्</button>
+</div>
+<div class="card">
+<h3>🧙 जादुई कथा कार्टुन</h3>
+<p>जादु र रमाइला पात्र भएका कथा।</p>
+<button class="action" onclick="youtube('नेपाली जादुई कथा cartoon')">भिडियो हेर्नुहोस्</button>
+</div>
+<div class="card">
+<h3>🎵 नेपाली बालगीत</h3>
+<p>बालबालिकाका रमाइला नेपाली गीत।</p>
+<button class="action" onclick="youtube('नेपाली बालगीत')">भिडियो हेर्नुहोस्</button>
+</div>
+</div>
+</section>
 
-    <div class="categories">
-
-        <button onclick="filterStories('all')">
-            सबै
-        </button>
-
-        <button onclick="filterStories('story')">
-            नेपाली कथा
-        </button>
-
-        <button onclick="filterStories('kids')">
-            बालकथा
-        </button>
-
-        <button onclick="filterStories('cartoon')">
-            कार्टुन
-        </button>
-
-    </div>
-
-    <div class="grid" id="storyGrid">
-
-        <div class="card" data-category="story">
-
-            <div class="thumbnail">🐦</div>
-
-            <div class="content">
-
-                <h3>जादुई चरा</h3>
-
-                <p>गरिब केटो र जादुई चराको कथा।</p>
-
-                <button class="btn"
-                onclick="readStory('bird')">
-                    कथा पढ्नुहोस्
-                </button>
-
-                <button class="btn favorite"
-                onclick="favoriteStory('जादुई चरा')">
-                    ❤️
-                </button>
-
-            </div>
-        </div>
-
-        <div class="card" data-category="kids">
-
-            <div class="thumbnail">👦</div>
-
-            <div class="content">
-
-                <h3>इमानदार बालक</h3>
-
-                <p>इमानदारीको महत्त्व सिकाउने कथा।</p>
-
-                <button class="btn"
-                onclick="readStory('boy')">
-                    कथा पढ्नुहोस्
-                </button>
-
-                <button class="btn favorite"
-                onclick="favoriteStory('इमानदार बालक')">
-                    ❤️
-                </button>
-
-            </div>
-        </div>
-
-        <div class="card" data-category="kids">
-
-            <div class="thumbnail">🦁</div>
-
-            <div class="content">
-
-                <h3>सिंह र मुसा</h3>
-
-                <p>सानो सहयोगको ठूलो महत्त्व।</p>
-
-                <button class="btn"
-                onclick="readStory('lion')">
-                    कथा पढ्नुहोस्
-                </button>
-
-                <button class="btn favorite"
-                onclick="favoriteStory('सिंह र मुसा')">
-                    ❤️
-                </button>
-
-            </div>
-        </div>
-
-        <div class="card" data-category="cartoon">
-
-            <div class="thumbnail">🎬</div>
-
-            <div class="content">
-
-                <h3>नेपाली कार्टुन</h3>
-
-                <p>नेपाली कार्टुन भिडियोहरू हेर्नुहोस्।</p>
-
-                <button class="btn"
-                onclick="openCartoon()">
-                    भिडियो हेर्नुहोस्
-                </button>
-
-            </div>
-        </div>
-
-    </div>
-
-    <p id="noResults"
-       style="display:none;text-align:center;margin-top:20px;">
-       कुनै कथा भेटिएन।
-    </p>
-
-    <div id="reader">
-
-        <h2 id="storyTitle"></h2>
-
-        <div id="storyText"></div>
-
-        <div class="reader-buttons">
-
-            <button class="btn" onclick="speakStory()">
-                🔊 कथा सुन्नुहोस्
-            </button>
-
-            <button class="btn" onclick="stopSpeech()">
-                ⏹️ आवाज रोक्नुहोस्
-            </button>
-
-            <button class="btn" onclick="closeStory()">
-                ⬅️ पछाडि जानुहोस्
-            </button>
-
-        </div>
-
-    </div>
-
-    <section class="about" id="cartoon">
-
-        <h2>🎬 नेपाली कार्टुन भिडियो</h2>
-
-        <p>यहाँ नेपाली कार्टुन भिडियोहरू हेर्न सक्नुहुन्छ।</p>
-
-    </section>
-
-    <section class="about" id="about">
-
-        <h2>हाम्रो बारेमा</h2>
-
-        <p>
-        नेपाली स्टोरी कर्नर नेपाली कथा, बालकथा,
-        कार्टुन चलचित्र र कविताहरूको डिजिटल संसार हो।
-        हाम्रो उद्देश्य नेपाली भाषा र संस्कृतिको
-        संरक्षण तथा प्रवर्द्धन गर्नु हो।
-        </p>
-
-    </section>
+<section id="favorites" class="reader">
+<button class="action" onclick="goHome()">⬅ पछाडि</button>
+<h2>❤️ मेरा मनपर्ने सामग्री</h2>
+<div class="grid" id="favoriteList"></div>
+</section>
 
 </div>
 
 <footer>
-    <h3>📚 नेपाली स्टोरी कर्नर</h3>
-    <p>नेपालमा बनेको ❤️</p>
-    <p>© 2026 नेपाली स्टोरी कर्नर</p>
+<h3>📚 नेपाली स्टोरी कर्नर</h3>
+<p>नेपाली भाषा, कथा, कविता र संस्कृतिको डिजिटल संसार।</p>
+<p>© 2026 Nepali Story Corner</p>
 </footer>
 
 <script>
+const stories = [
 
-const stories = {
+{
+id:1,title:"जादुई चरा",category:"कथा",
+text:`एउटा सुन्दर गाउँमा राम नाम गरेको गरिब केटो बस्थ्यो। उसको परिवार सानो थियो। राम आफ्नी आमालाई धेरै माया गर्थ्यो।
 
-bird: {
-title: "जादुई चरा",
-text: `एउटा गाउँमा राम नामको गरिब केटो बस्थ्यो।
+एक दिन राम जंगलमा दाउरा खोज्न गयो। त्यहाँ उसले एउटा सुन्दर चरा रूखमुनि बसेर कराइरहेको देख्यो। चराको पखेटामा चोट लागेको थियो।
 
-एक दिन ऊ जंगलमा दाउरा खोज्न गयो।
-त्यहाँ उसले एउटा घाइते चरा भेट्टायो।
+रामले चरालाई बिस्तारै उठायो र घरमा लगेर उपचार गर्‍यो। उसले चरालाई पानी र खानेकुरा दियो।
 
-रामले चरालाई घरमा ल्याएर हेरचाह गर्‍यो।
-केही दिनपछि चरा निको भयो।
+केही दिनपछि चरा निको भयो। चरा साधारण थिएन। त्यो एउटा जादुई चरा थियो।
 
-चराले रामलाई भन्यो,
-तिमीले मलाई सहयोग गर्‍यौ,
-अब म तिमीलाई एउटा उपहार दिन्छु।
+चराले भन्यो, "राम, तिमीले मलाई सहयोग गर्‍यौ। म तिमीलाई एउटा वरदान दिन चाहन्छु।"
 
-चराले रामलाई जादुई बीउ दियो।
-रामले त्यो बीउ रोप्यो।
+रामले भन्यो, "मलाई धन चाहिँदैन। मेरो गाउँका सबै मानिस खुसी र स्वस्थ भएको देख्न चाहन्छु।"
 
-केही समयपछि त्यसमा सुनका फल लागे।
-रामले ती फल बेचेर गाउँका गरिब मानिसहरूलाई सहयोग गर्‍यो।
+चराले आफ्नो जादु प्रयोग गर्‍यो। गाउँमा पानीको समस्या हट्यो, खेतबारी हरियो भयो र सबै मानिस मिलेर बस्न थाले।
 
-शिक्षा: अरूलाई सहयोग गर्नु राम्रो काम हो।`
+गाउँका मानिसले रामको प्रशंसा गरे।
+
+शिक्षा: अरूलाई निःस्वार्थ सहयोग गर्नु नै सबैभन्दा ठूलो पुण्य हो।`
 },
 
-boy: {
-title: "इमानदार बालक",
-text: `मोहन नामको एउटा बालक विद्यालय जाँदै थियो।
+{
+id:2,title:"इमानदार बालक",category:"बालकथा",
+text:`एक गाउँमा सुमन नाम गरेको बालक बस्थ्यो। ऊ सधैँ सत्य बोल्थ्यो र सबैलाई सम्मान गर्थ्यो।
 
-उसले बाटोमा एउटा पर्स भेट्टायो।
-त्यस पर्समा पैसा र परिचयपत्र थियो।
+एक दिन विद्यालयबाट घर फर्कँदै गर्दा उसले बाटोमा एउटा पैसाले भरिएको पर्स भेट्टायो।
 
-मोहनले त्यो पर्स आफ्नो शिक्षकलाई बुझायो।
-शिक्षकले पर्सको मालिक पत्ता लगाए।
+उसका साथीले भने, "यो पैसा हामी राखौँ। कसैले देखेको छैन।"
 
-पर्सको मालिकले मोहनलाई धन्यवाद दिए।
+तर सुमनले भन्यो, "अरूको सामान लिनु राम्रो होइन। यसको मालिकलाई खोज्नुपर्छ।"
 
-शिक्षा: सधैँ इमानदार बन्नुपर्छ।`
+उसले पर्स विद्यालयका शिक्षकलाई बुझायो। शिक्षकले पर्सको मालिक पत्ता लगाए।
+
+पर्स हराएका एक वृद्ध मानिस विद्यालय आए। आफ्नो पर्स फिर्ता पाउँदा उनी धेरै खुसी भए।
+
+उनले सुमनलाई धन्यवाद दिए र उसको इमानदारीको प्रशंसा गरे।
+
+शिक्षा: इमानदारी मानिसको सबैभन्दा ठूलो गहना हो।`
 },
 
-lion: {
-title: "सिंह र मुसा",
-text: `एउटा जंगलमा ठूलो सिंह बस्थ्यो।
+{
+id:3,title:"सिंह र मुसा",category:"बालकथा",
+text:`एउटा ठूलो जंगलमा एउटा शक्तिशाली सिंह बस्थ्यो। एक दिन सिंह रूखको छायामा आराम गरिरहेको थियो।
 
-एक दिन एउटा सानो मुसाले सिंहलाई ब्युँझायो।
-सिंहले मुसालाई समात्यो।
+त्यही बेला एउटा सानो मुसा खेल्दै सिंहको शरीरमाथि चढ्यो। सिंह ब्युँझियो र मुसालाई समात्यो।
 
-मुसाले आफूलाई छोडिदिन आग्रह गर्‍यो।
-सिंहले मुसालाई छोडिदियो।
+मुसाले डराउँदै भन्यो, "महाराज, मलाई छोडिदिनुहोस्। कुनै दिन म पनि तपाईंलाई सहयोग गर्न सक्छु।"
 
-केही दिनपछि सिंह सिकारीको जालमा पर्‍यो।
-मुसाले आफ्नो दाँतले जाल काटिदियो।
+सिंह हाँस्यो र मुसालाई छोडिदियो।
 
-सिंह स्वतन्त्र भयो।
+केही दिनपछि सिंह शिकारीको जालमा पर्‍यो। उसले धेरै प्रयास गर्दा पनि जालबाट निस्कन सकेन।
 
-शिक्षा: सानो सहयोग पनि ठूलो हुन सक्छ।`
-}
+सिंहको आवाज सुनेर मुसा त्यहाँ आयो। उसले आफ्नो दाँतले जाल काट्न थाल्यो।
 
-};
+केही समयपछि जाल काटियो र सिंह स्वतन्त्र भयो।
 
-function readStory(id) {
+सिंहले मुसालाई धन्यवाद दियो।
 
-    const story = stories[id];
+शिक्षा: सानो वा ठूलो भनेर कसैलाई कमजोर ठान्नु हुँदैन।`
+},
 
-    if (!story) return;
+{
+id:4,title:"गरिब केटोको सपना",category:"कथा",
+text:`एउटा गाउँमा अर्जुन नाम गरेको केटो बस्थ्यो। उसको परिवार आर्थिक रूपमा कमजोर थियो। तर अर्जुन पढाइमा निकै मेहनती थियो।
 
-    stopSpeech();
+उसले बिहान घरको काम गर्थ्यो र दिउँसो विद्यालय जान्थ्यो। राति बत्ती नभएका बेला पनि ऊ मेहनत गरेर पढ्थ्यो।
 
-    document.getElementById("storyTitle").innerText =
-        story.title;
+एक दिन शिक्षकले सोधे, "अर्जुन, तिमी भविष्यमा के बन्न चाहन्छौ?"
 
-    document.getElementById("storyText").innerText =
-        story.text;
+अर्जुनले भन्यो, "म ठूलो भएर डाक्टर बन्न चाहन्छु र गाउँका गरिब मानिसको सेवा गर्न चाहन्छु।"
 
-    document.getElementById("reader").style.display =
-        "block";
+उसले निरन्तर मेहनत गरिरह्यो। परीक्षामा राम्रो अंक ल्यायो र छात्रवृत्ति पनि पायो।
 
-    document.getElementById("reader").scrollIntoView({
-        behavior: "smooth"
-    });
+वर्षौँको मेहनतपछि अर्जुन डाक्टर बन्यो। ऊ आफ्नै गाउँ फर्कियो र बिरामी मानिसहरूको उपचार गर्न थाल्यो।
 
-}
+गाउँका सबै मानिस खुसी भए।
 
-function closeStory() {
+शिक्षा: मेहनत, धैर्य र राम्रो उद्देश्यले सपना पूरा गर्न सहयोग गर्छ।`
+},
 
-    stopSpeech();
+{
+id:5,title:"लोभी कुकुर",category:"बालकथा",
+text:`एउटा कुकुरले एक दिन मासुको टुक्रा भेट्टायो। ऊ त्यो मासु मुखमा च्यापेर घरतिर जाँदै थियो।
 
-    document.getElementById("reader").style.display =
-        "none";
+बाटोमा एउटा खोलामाथिको पुल आयो। कुकुरले पानीमा आफ्नो छायाँ देख्यो।
 
-}
+उसलाई लाग्यो, पानीमा अर्को कुकुर छ र त्यसको मुखमा पनि मासु छ।
 
-function speakStory() {
+उसले अर्को मासु पनि पाउने लोभमा भुक्न खोज्यो। मुख खोल्नेबित्तिकै उसको मासु पानीमा खस्यो।
 
-    if (!("speechSynthesis" in window)) {
-        alert("तपाईंको ब्राउजरमा आवाज सुविधा उपलब्ध छैन।");
-        return;
-    }
+कुकुर निराश भयो र खाली मुख घर फर्कियो।
 
-    stopSpeech();
+शिक्षा: धेरै लोभ गर्दा भएको वस्तु पनि गुम्न सक्छ।`
+},
 
-    const text =
-        document.getElementById("storyText").innerText;
+{
+id:6,title:"किसान र सुनको बीउ",category:"कथा",
+text:`एउटा मेहनती किसान आफ्नो खेतमा काम गर्थ्यो। एक दिन उसले खेतमा एउटा चम्किलो बीउ भेट्टायो।
 
-    const speech = new SpeechSynthesisUtterance(text);
+उसले त्यो बीउ रोप्यो र नियमित पानी हाल्यो। केही समयपछि त्यहाँ एउटा ठूलो रूख उम्रियो।
 
-    speech.lang = "ne-NP";
-    speech.rate = 0.85;
+रूखमा सुनजस्ता चम्किला फल लागे। किसानले ती फल बेचेर आफ्नो परिवारको जीवन सजिलो बनायो।
 
-    window.speechSynthesis.speak(speech);
+तर उसले खेती गर्न छोडेन। उसलाई थाहा थियो कि सफलता मेहनतबाट आउँछ।
 
-}
+शिक्षा: अवसर पाएपछि पनि मेहनत गर्न छोड्नु हुँदैन।`
+},
 
-function stopSpeech() {
+{
+id:7,title:"आमाको माया",category:"कथा",
+text:`एउटा सानो गाउँमा आमा र छोरा बस्थे। आमा दिनभरि काम गरेर छोरालाई पढाउँथिन्।
 
-    if ("speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-    }
+छोरा ठूलो हुँदै गयो। उसले आमाको दुःख र मेहनत बुझ्न थाल्यो।
 
-}
+एक दिन उसले आमालाई भन्यो, "आमा, म ठूलो भएर तपाईंलाई सुख दिनेछु।"
 
-function filterStories(category) {
+आमाले मुस्कुराउँदै भनिन्, "बाबु, तिमी असल मानिस बन्यौ भने मलाई त्यही नै सबैभन्दा ठूलो खुसी हुनेछ।"
 
-    stopSpeech();
+छोराले आमाको कुरा मनमा राख्यो र सबैलाई सम्मान गर्ने असल मानिस बन्यो।
 
-    const cards = document.querySelectorAll(".card");
+शिक्षा: आमाबुबाको माया र त्यागको सम्मान गर्नुपर्छ।`
+},
 
-    let count = 0;
+{
+id:8,title:"एकताको शक्ति",category:"बालकथा",
+text:`एउटा गाउँमा चार जना साथी बस्थे। उनीहरू सधैँ सँगै खेल्थे तर साना कुरामा झगडा पनि गर्थे।
 
-    cards.forEach(card => {
+एक दिन उनीहरूको शिक्षकले चारवटा साना काठ दिए। एउटा काठ सजिलै भाँचियो।
 
-        const show =
-            category === "all" ||
-            card.dataset.category === category;
+त्यसपछि शिक्षकले चारवटा काठलाई डोरीले बाँधेर दिए। अब ती काठ भाँच्न धेरै गाह्रो भयो।
 
-        card.style.display = show ? "block" : "none";
+शिक्षकले भने, "तिमीहरू पनि मिलेर बस्यौ भने बलियो हुनेछौ।"
 
-        if (show) count++;
+चारै साथीले एकअर्कालाई सहयोग गर्ने वाचा गरे।
 
-    });
+शिक्षा: एकतामा ठूलो शक्ति हुन्छ।`
+},
 
-    document.getElementById("reader").style.display = "none";
-
-    document.getElementById("noResults").style.display =
-        count === 0 ? "block" : "none";
-
-    document.getElementById("search").value = "";
-
-}
-
-function searchStories() {
-
-    stopSpeech();
-
-    const value =
-        document.getElementById("search").value.toLowerCase();
-
-    const cards = document.querySelectorAll(".card");
-
-    let count = 0;
-
-    cards.forEach(card => {
-
-        const match =
-            card.innerText.toLowerCase().includes(value);
-
-        card.style.display = match ? "block" : "none";
-
-        if (match) count++;
-
-    });
-
-    document.getElementById("noResults").style.display =
-        count === 0 ? "block" : "none";
-
-}
-
-function favoriteStory(name) {
-
-    let favorites =
-        JSON.parse(localStorage.getItem("favorites") || "[]");
-
-    if (favorites.includes(name)) {
-        alert("यो कथा पहिले नै मनपर्नेमा छ।");
-        return;
-    }
-
-    favorites.push(name);
-
-    localStorage.setItem(
-        "favorites",
-        JSON.stringify(favorites)
-    );
-
-    alert(name + " मनपर्ने कथामा थपियो।");
-
-}
-
-function openCartoon() {
-
-    window.open(
-        "https://www.youtube.com/results?search_query=Nepali+Cartoon",
-        "_blank"
-    );
-
-}
-
-</script>
-
-</body>
-</html>
+{
+id:9,title:"मेरो प्यारो नेपाल",category:"कविता",
+text:`हिमाल हाँस्छ सेतो शिरमा,
+पहाड नाच्छ हरियो वनमा।
+तराई फुल्छ धानको खेतमा,
+सुन्दर नेपाल मेरो मनमा।
+
+लालीगुराँस फुल्छ वनभरि,
+नदी बग्छ कलकल गरी।
+मेचीदेखि महाकालीसम्म,
+माया बस्छ मुटुभरि।
+
+शान्ति, प्रेम र एकताको देश,
+हाम्रो प्यारो नेपाल विशेष।
+मेहनत गरी अघि बढौँ,
+नेपालको नाम उज्यालो पारौँ।`
+},
+
+{
+id:10,title:"आमा",category:"कविता",
+text:`आमा तिमी मेरो संसा
+
+हुन्छ, बुझें, सबै कुरा एउटै फाइलमा मिलाउँछु।
+
+यस्तो रहेछ, तपाईंले पठाउनुभएको स्क्रिनसट
