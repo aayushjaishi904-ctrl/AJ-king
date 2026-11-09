@@ -15,27 +15,27 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f6fa;
+    background: #f4f6fb;
     color: #222;
 }
 
 header {
-    background: #182848;
+    background: #172554;
     color: white;
     padding: 25px 15px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 30px;
+    font-size: 28px;
 }
 
 header p {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 nav {
-    background: #243b65;
+    background: #1e3a8a;
     padding: 15px;
     text-align: center;
 }
@@ -48,24 +48,25 @@ nav a {
 }
 
 .hero {
-    text-align: center;
-    padding: 60px 15px;
-    background: linear-gradient(120deg,#4776e6,#8e54e9);
+    background: linear-gradient(120deg,#2563eb,#9333ea);
     color: white;
+    text-align: center;
+    padding: 55px 15px;
 }
 
 .hero h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
-.hero input {
-    padding: 13px;
+.search {
+    margin-top: 20px;
+    padding: 14px;
     width: 90%;
     max-width: 450px;
     border: none;
     border-radius: 25px;
-    margin-top: 20px;
+    font-size: 16px;
 }
 
 .container {
@@ -74,34 +75,30 @@ nav a {
     padding: 30px 15px;
 }
 
-.section-title {
+.title {
     text-align: center;
     margin-bottom: 25px;
-    color: #243b65;
+    color: #1e3a8a;
 }
 
 .categories {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
 .categories button {
-    padding: 11px 20px;
+    padding: 10px 18px;
     border: none;
-    background: #243b65;
-    color: white;
     border-radius: 20px;
+    background: #1e3a8a;
+    color: white;
     cursor: pointer;
 }
 
-.categories button:hover {
-    background: #4776e6;
-}
-
-.story-grid {
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
     gap: 20px;
@@ -111,69 +108,84 @@ nav a {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 3px 12px #00000015;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 3px 12px #0002;
 }
 
 .thumbnail {
     height: 150px;
-    background: linear-gradient(135deg,#4776e6,#8e54e9);
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 55px;
+    align-items: center;
+    font-size: 65px;
+    background: linear-gradient(120deg,#60a5fa,#c084fc);
 }
 
-.card-content {
+.content {
     padding: 18px;
 }
 
-.card h3 {
+.content h3 {
     margin-bottom: 10px;
 }
 
-.card p {
+.content p {
     color: #666;
     line-height: 1.6;
 }
 
-.card button {
-    margin-top: 15px;
-    padding: 10px 18px;
-    background: #243b65;
+.btn {
+    padding: 10px 16px;
+    background: #2563eb;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 7px;
+    margin-top: 15px;
     cursor: pointer;
 }
 
-.card button:hover {
-    background: #4776e6;
+.btn:hover {
+    background: #172554;
+}
+
+#reader {
+    display: none;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 25px;
+    box-shadow: 0 3px 12px #0002;
+}
+
+#reader h2 {
+    color: #1e3a8a;
+    margin-bottom: 18px;
+}
+
+#storyText {
+    font-size: 18px;
+    line-height: 2;
+    white-space: pre-line;
+}
+
+.reader-buttons {
+    margin-top: 20px;
 }
 
 .about {
     background: white;
     padding: 30px;
-    border-radius: 12px;
     text-align: center;
-    line-height: 1.8;
+    border-radius: 12px;
     margin-top: 35px;
+    line-height: 1.8;
 }
 
 footer {
-    background: #182848;
+    background: #172554;
     color: white;
     padding: 25px;
     text-align: center;
     margin-top: 40px;
-}
-
-footer a {
-    color: #ffd166;
 }
 
 </style>
@@ -183,7 +195,7 @@ footer a {
 
 <header>
     <h1>📚 Nepali Story Corner</h1>
-    <p>नेपाली कथा, कार्टुन र कविताको संसार</p>
+    <p>नेपाली कथा र कार्टुनको संसार</p>
 </header>
 
 <nav>
@@ -197,11 +209,12 @@ footer a {
 
     <h2>स्वागत छ नेपाली Story Corner मा!</h2>
 
-    <p>नयाँ नेपाली कथा र रमाइला कार्टुनहरू पढ्नुहोस् र हेर्नुहोस्।</p>
+    <p>रमाइला नेपाली कथा पढ्नुहोस् र सुन्नुहोस्।</p>
 
     <input
-        type="text"
+        class="search"
         id="search"
+        type="search"
         placeholder="कथा खोज्नुहोस्..."
         oninput="searchStories()"
     >
@@ -210,91 +223,293 @@ footer a {
 
 <div class="container" id="stories">
 
-    <h2 class="section-title">🌟 हाम्रा कथाहरू</h2>
+    <h2 class="title">🌟 नेपाली कथाहरू</h2>
 
     <div class="categories">
+
         <button onclick="filterStories('all')">सबै</button>
-        <button onclick="filterStories('story')">नेपाली कथा</button>
-        <button onclick="filterStories('cartoon')">कार्टुन</button>
-        <button onclick="filterStories('poem')">कविता</button>
+
+        <button onclick="filterStories('story')">
+            नेपाली कथा
+        </button>
+
+        <button onclick="filterStories('kids')">
+            बालकथा
+        </button>
+
+        <button onclick="filterStories('cartoon')">
+            कार्टुन
+        </button>
+
     </div>
 
-    <div class="story-grid" id="storyGrid">
+    <div class="grid" id="storyGrid">
 
         <div class="card" data-category="story">
+
             <div class="thumbnail">🐦</div>
-            <div class="card-content">
+
+            <div class="content">
+
                 <h3>जादुई चरा</h3>
-                <p>एउटा गरिब केटो र जादुई चराको रोचक कथा।</p>
-                <button onclick="readStory('जादुई चरा')">
+
+                <p>गरिब केटो र जादुई चराको सुन्दर कथा।</p>
+
+                <button class="btn"
+                    onclick="readStory('bird')">
                     कथा पढ्नुहोस्
                 </button>
+
             </div>
         </div>
 
-        <div class="card" data-category="story">
+        <div class="card" data-category="kids">
+
             <div class="thumbnail">👦</div>
-            <div class="card-content">
+
+            <div class="content">
+
                 <h3>इमानदार बालक</h3>
+
                 <p>इमानदारी र मेहनतको महत्त्व सिकाउने कथा।</p>
-                <button onclick="readStory('इमानदार बालक')">
+
+                <button class="btn"
+                    onclick="readStory('boy')">
                     कथा पढ्नुहोस्
                 </button>
+
+            </div>
+        </div>
+
+        <div class="card" data-category="kids">
+
+            <div class="thumbnail">🦁</div>
+
+            <div class="content">
+
+                <h3>सिंह र मुसा</h3>
+
+                <p>सानो सहयोगको ठूलो महत्त्व बताउने कथा।</p>
+
+                <button class="btn"
+                    onclick="readStory('lion')">
+                    कथा पढ्नुहोस्
+                </button>
+
             </div>
         </div>
 
         <div class="card" data-category="cartoon">
+
             <div class="thumbnail">🎬</div>
-            <div class="card-content">
+
+            <div class="content">
+
                 <h3>नेपाली कार्टुन</h3>
-                <p>बालबालिकाका लागि रमाइला कार्टुन भिडियो।</p>
-                <button onclick="openVideo('')">
+
+                <p>बालबालिकाका लागि रमाइला भिडियो।</p>
+
+                <button class="btn"
+                    onclick="openCartoon()">
                     भिडियो हेर्नुहोस्
                 </button>
-            </div>
-        </div>
 
-        <div class="card" data-category="poem">
-            <div class="thumbnail">✍️</div>
-            <div class="card-content">
-                <h3>नेपाली कविता</h3>
-                <p>मन छुने नेपाली कविता र बालकविताहरू।</p>
-                <button onclick="readStory('नेपाली कविता')">
-                    पढ्नुहोस्
-                </button>
             </div>
         </div>
 
     </div>
 
-    <p id="noResults" style="display:none;text-align:center;margin-top:20px;">
-        कुनै सामग्री भेटिएन।
+    <p id="noResults" style="display:none;text-align:center;padding:20px;">
+        कथा भेटिएन।
     </p>
 
-    <section id="cartoon" class="about">
-        <h2>🎥 Cartoon Videos</h2>
-        <p>यहाँ पछि आफ्ना YouTube कार्टुन भिडियोहरू राख्न सक्नुहुन्छ।</p>
+    <div id="reader">
+
+        <h2 id="storyTitle"></h2>
+
+        <div id="storyText"></div>
+
+        <div class="reader-buttons">
+
+            <button class="btn" onclick="speakStory()">
+                🔊 कथा सुन्नुहोस्
+            </button>
+
+            <button class="btn" onclick="stopSpeech()">
+                आवाज रोक्नुहोस्
+            </button>
+
+            <button class="btn" onclick="closeStory()">
+                ⬅️ पछाडि जानुहोस्
+            </button>
+
+        </div>
+
+    </div>
+
+    <section class="about" id="cartoon">
+
+        <h2>🎬 Cartoon Videos</h2>
+
+        <p>यहाँ नेपाली कार्टुन भिडियोहरू राख्न सकिन्छ।</p>
+
     </section>
 
-    <section id="about" class="about">
+    <section class="about" id="about">
+
         <h2>हाम्रो बारेमा</h2>
+
         <p>
         Nepali Story Corner नेपाली कथा, बालकथा,
-        कार्टुन र कविताका लागि बनाइएको वेबसाइट हो।
+        कार्टुन र मनोरञ्जनका लागि बनाइएको वेबसाइट हो।
         हाम्रो उद्देश्य नेपाली भाषा र संस्कृतिलाई
         डिजिटल माध्यमबाट अगाडि बढाउनु हो।
         </p>
+
     </section>
 
 </div>
 
 <footer>
+
     <h3>📚 Nepali Story Corner</h3>
+
     <p>Made with ❤️ in Nepal</p>
+
     <p>© 2026 Nepali Story Corner</p>
+
 </footer>
 
 <script>
+
+const stories = {
+
+bird: {
+title: "जादुई चरा",
+text: `एक गाउँमा एउटा गरिब केटो बस्थ्यो।
+उसको नाम राम थियो।
+
+एक दिन राम जंगलमा दाउरा खोज्न गयो।
+त्यहाँ उसले एउटा सुन्दर चरा भेट्टायो।
+
+चरा घाइते भएको थियो।
+रामले चरालाई घरमा ल्याएर हेरचाह गर्‍यो।
+
+केही दिनपछि चरा निको भयो।
+
+चराले भन्यो, "राम, तिमीले मेरो सहयोग गर्‍यौ।
+अब म तिमीलाई एउटा उपहार दिन्छु।"
+
+चराले रामलाई जादुई बीउ दियो।
+रामले त्यो बीउ रोप्यो।
+
+केही समयपछि त्यहाँ सुनका फल लागे।
+राम खुसी भयो।
+
+उसले गाउँका गरिब मानिसहरूलाई पनि सहयोग गर्‍यो।
+
+शिक्षा: अरूलाई सहयोग गर्नु नै सबैभन्दा ठूलो धर्म हो।`
+},
+
+boy: {
+title: "इमानदार बालक",
+text: `एउटा गाउँमा मोहन नामको बालक बस्थ्यो।
+
+एक दिन विद्यालय जाँदै गर्दा उसले बाटोमा एउटा पर्स भेट्टायो।
+
+पर्सभित्र पैसा र परिचयपत्र थियो।
+
+मोहनले पर्स आफ्नो शिक्षकलाई बुझायो।
+
+शिक्षकले पर्सको मालिक पत्ता लगाए।
+
+मालिकले मोहनलाई धन्यवाद दिए।
+
+शिक्षकले भने, "तिमी साँच्चै इमानदार बालक हौ।"
+
+शिक्षा: सधैँ इमानदार बन्नुपर्छ।`
+},
+
+lion: {
+title: "सिंह र मुसा",
+text: `एक दिन जंगलमा एउटा सिंह सुतिरहेको थियो।
+
+एउटा सानो मुसा त्यहाँ खेल्दै थियो।
+
+मुसा सिंहमाथि पुग्यो।
+सिंह ब्युँझियो।
+
+सिंहले मुसालाई समात्यो।
+मुसाले आफूलाई छोडिदिन आग्रह गर्‍यो।
+
+केही दिनपछि सिंह सिकारीको जालमा पर्‍यो।
+
+मुसाले आफ्नो दाँतले जाल काटिदियो।
+
+सिंह स्वतन्त्र भयो।
+
+शिक्षा: सानो सहयोग पनि ठूलो हुन सक्छ।`
+}
+
+};
+
+function readStory(id) {
+
+    let story = stories[id];
+
+    if (!story) return;
+
+    document.getElementById("storyTitle").innerText =
+        story.title;
+
+    document.getElementById("storyText").innerText =
+        story.text;
+
+    document.getElementById("reader").style.display =
+        "block";
+
+    document.getElementById("reader").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+function closeStory() {
+
+    stopSpeech();
+
+    document.getElementById("reader").style.display =
+        "none";
+
+}
+
+function speakStory() {
+
+    if (!("speechSynthesis" in window)) {
+        alert("यो Browser मा आवाज सुविधा उपलब्ध छैन।");
+        return;
+    }
+
+    stopSpeech();
+
+    let text = document.getElementById("storyText").innerText;
+
+    let speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "ne-NP";
+    speech.rate = 0.85;
+
+    window.speechSynthesis.speak(speech);
+
+}
+
+function stopSpeech() {
+
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
+
+}
 
 function filterStories(category) {
 
@@ -302,67 +517,49 @@ function filterStories(category) {
 
     cards.forEach(card => {
 
-        if (
+        card.style.display =
             category === "all" ||
             card.dataset.category === category
-        ) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
+            ? "block" : "none";
 
     });
 
-    document.getElementById("noResults").style.display = "none";
+    document.getElementById("noResults").style.display =
+        "none";
+
+    document.getElementById("search").value = "";
+
 }
 
 function searchStories() {
 
-    let input = document
+    let value = document
         .getElementById("search")
         .value.toLowerCase();
 
     let cards = document.querySelectorAll(".card");
 
-    let found = 0;
+    let count = 0;
 
     cards.forEach(card => {
 
-        let text = card.innerText.toLowerCase();
+        let match =
+            card.innerText.toLowerCase().includes(value);
 
-        if (text.includes(input)) {
-            card.style.display = "block";
-            found++;
-        } else {
-            card.style.display = "none";
-        }
+        card.style.display = match ? "block" : "none";
+
+        if (match) count++;
 
     });
 
     document.getElementById("noResults").style.display =
-        found === 0 ? "block" : "none";
-}
-
-function readStory(title) {
-
-    alert(
-        title +
-        " को पूरा कथा चाँडै यहाँ उपलब्ध हुनेछ।"
-    );
+        count === 0 ? "block" : "none";
 
 }
 
-function openVideo(videoId) {
+function openCartoon() {
 
-    if (!videoId) {
-        alert("अहिले भिडियो थपिएको छैन।");
-        return;
-    }
-
-    window.open(
-        "https://www.youtube.com/watch?v=" + videoId,
-        "_blank"
-    );
+    alert("यहाँ आफ्नो YouTube Cartoon Video Link थप्नुहोस्।");
 
 }
 
