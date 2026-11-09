@@ -3,263 +3,538 @@
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AAYUSH Nepali Sahitya Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>नेपाली साहित्य संसार</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#0c1224;color:#f5f5ff;font-family:Arial,sans-serif}
-header{text-align:center;padding:35px 15px;background:linear-gradient(120deg,#172d59,#6637a5)}
-header h1{font-size:30px}
-header p{color:#e0ddff}
-main{max-width:1000px;margin:auto;padding:18px}
-.panel{background:#18213a;padding:20px;border-radius:15px;margin:15px 0}
-.tabs,.topics{display:flex;gap:10px;flex-wrap:wrap}
-button{border:0;padding:12px 16px;border-radius:9px;background:#684be0;color:white;cursor:pointer}
-button:hover{background:#876eff}
-.topic{background:#253251}
-input{width:100%;padding:13px;border-radius:9px;border:1px solid #56617d;background:#10182c;color:white}
-#article{line-height:2;font-size:17px;white-space:pre-line}
-#article h2{color:#75e8ff}
-#article h3{color:#d6b7ff}
-.meta{color:#aebcda}
-footer{text-align:center;padding:25px;color:#aab3ce}
+body{
+ margin:0;
+ font-family:"Noto Sans Devanagari",Arial,sans-serif;
+ background:#f4f1eb;
+ color:#29251f;
+}
+header{
+ background:linear-gradient(135deg,#172e40,#315b70);
+ color:white;
+ text-align:center;
+ padding:30px 15px;
+}
+header h1{font-size:30px;margin:5px}
+header p{color:#e4eaf0}
+nav{
+ display:flex;flex-wrap:wrap;justify-content:center;
+ background:#203c4c;gap:8px;padding:12px;
+ position:sticky;top:0;z-index:5;
+}
+nav button{
+ border:0;padding:11px 17px;border-radius:8px;
+ background:#ffffff;color:#203c4c;
+ cursor:pointer;font-weight:bold;
+}
+nav button.active{background:#e7b75a;color:#222}
+.container{max-width:1050px;margin:auto;padding:20px}
+.panel{
+ background:white;border-radius:13px;padding:20px;
+ box-shadow:0 3px 15px #0000000c;margin-bottom:18px;
+}
+.stats{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:12px;margin:15px 0;
+}
+.stat{
+ background:#edf3f4;padding:18px;
+ border-radius:10px;text-align:center;
+}
+.stat strong{display:block;font-size:25px;color:#24556a}
+select,input{
+ width:100%;padding:13px;margin:7px 0;
+ border:1px solid #ccc;border-radius:8px;
+ font-size:16px;background:white;
+}
+button{font-family:inherit}
+.action{
+ border:0;padding:12px 17px;border-radius:8px;
+ background:#24556a;color:white;cursor:pointer;
+ margin:4px;
+}
+.action:hover{opacity:.85}
+.secondary{background:#e4a943;color:#222}
+.reader{
+ background:#fffdf8;padding:25px;border-radius:12px;
+ border:1px solid #e7dfd0;line-height:2;
+ font-size:18px;min-height:250px;
+}
+.reader h2{text-align:center;color:#254e60}
+.reader h3{color:#9a6727}
+.reader p{text-indent:25px;margin:15px 0}
+.category-title{text-align:center;color:#244c60}
+footer{
+ background:#203c4c;color:white;
+ text-align:center;padding:25px;margin-top:30px;
+}
+.small{font-size:13px;color:#777}
+.hidden{display:none}
+@media(max-width:600px){
+ header h1{font-size:23px}
+ .container{padding:10px}
+ .reader{padding:15px;font-size:16px}
+ nav button{padding:9px;font-size:13px}
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>📚 AAYUSH नेपाली साहित्य केन्द्र</h1>
-<p>कथा | कविता | निबन्ध | बालविकासका लेख</p>
-<p>पढौँ, सिकौँ र सिर्जना गरौँ</p>
+ <h1>📚 नेपाली साहित्य संसार</h1>
+ <p>कथा • कविता • निबन्ध • बोधकथा</p>
+ <p>पढौँ, सिकौँ र नेपाली साहित्यको आनन्द लिऔँ।</p>
 </header>
 
-<main>
-<section class="panel">
-<h2>साहित्यको विधा छान्नुहोस्</h2>
-<div class="tabs" id="categories"></div>
-</section>
+<nav>
+ <button class="active" onclick="changeCategory('story',this)">📖 कथा</button>
+ <button onclick="changeCategory('poem',this)">🌸 कविता</button>
+ <button onclick="changeCategory('essay',this)">✍️ निबन्ध</button>
+ <button onclick="changeCategory('bodh',this)">💡 बोधकथा</button>
+</nav>
 
-<section class="panel">
-<h2>विषय खोज्नुहोस्</h2>
-<input id="search" placeholder="विषयको नाम लेख्नुहोस्...">
-<div class="topics" id="topics" style="margin-top:15px"></div>
-</section>
+<div class="container">
 
-<section class="panel">
-<div id="article">
-<h2>स्वागत छ!</h2>
-<p>माथिबाट साहित्यको विधा र विषय छानेर पूरा लेख पढ्नुहोस्।</p>
+ <div class="panel">
+  <h2 class="category-title" id="categoryHeading">📖 कथा संग्रह</h2>
+
+  <div class="stats">
+   <div class="stat">
+    <strong>१०,०००</strong>
+    <span>प्रत्येक भागका सामग्री</span>
+   </div>
+   <div class="stat">
+    <strong>४०,०००</strong>
+    <span>कुल सामग्री</span>
+   </div>
+  </div>
+
+  <label>विषय छान्नुहोस्:</label>
+  <select id="topicSelect" onchange="resetReader()"></select>
+
+  <label>सामग्री खोज्नुहोस्:</label>
+  <input id="searchInput" placeholder="कथा, कविता, निबन्ध खोज्नुहोस्...">
+  <button class="action" onclick="searchContent()">🔍 खोज्नुहोस्</button>
+
+  <p id="resultInfo" class="small">
+   अहिले पहिलो सामग्री देखाइएको छ।
+  </p>
+ </div>
+
+ <div class="panel">
+  <h3 id="itemNumber">सामग्री नम्बर: १ / १०,०००</h3>
+
+  <div class="reader" id="reader">
+   <h2>नेपाली साहित्य संसारमा स्वागत छ</h2>
+   <p>आफूलाई मन परेको भाग छानेर पढ्न सुरु गर्नुहोस्।</p>
+  </div>
+
+  <div style="text-align:center;margin-top:18px">
+   <button class="action" onclick="previousItem()">⬅ अघिल्लो</button>
+   <button class="action secondary" onclick="randomItem()">🎲 अनियमित</button>
+   <button class="action" onclick="nextItem()">अर्को ➡</button>
+  </div>
+
+  <div style="text-align:center;margin-top:10px">
+   <button class="action secondary" onclick="increaseFont(1)">अक्षर ठूलो +</button>
+   <button class="action secondary" onclick="increaseFont(-1)">अक्षर सानो −</button>
+   <button class="action" onclick="window.print()">🖨 प्रिन्ट</button>
+  </div>
+ </div>
+
+ <div class="panel">
+  <h3>📌 सामग्रीको जानकारी</h3>
+  <p id="description">
+   यहाँ विभिन्न नेपाली साहित्यिक सामग्री पढ्न सकिन्छ।
+  </p>
+  <p class="small">
+   यो वेबसाइटको प्रारम्भिक संस्करण हो। सामग्रीहरू ब्राउजरमै तयार हुन्छन्।
+  </p>
+ </div>
+
 </div>
-</section>
-</main>
 
-<footer>© 2026 AAYUSH नेपाली साहित्य केन्द्र</footer>
+<footer>
+ <h3>नेपाली साहित्य संसार</h3>
+ <p>नेपाली भाषा, साहित्य र ज्ञानको डिजिटल पुस्तकालय।</p>
+ <p>© 2026 नेपाली साहित्य संसार</p>
+</footer>
 
 <script>
-const library = {
-"कथा":[
-{
-title:"आमाको माया",
-parts:[
-["भाग १ : सानो गाउँको ठूलो सपना",
-"नेपालको एउटा सुन्दर गाउँमा रमेश नाम गरेको बालक बस्थ्यो। उसको घर सानो थियो, तर घरभित्र माया र आत्मीयताको कुनै कमी थिएन। उसका बुबा खेतीपाती गर्थे र आमा घरको कामसँगै छोराको पढाइमा ध्यान दिन्थिन्। रमेशको परिवार धनी थिएन, तर उनीहरूको मनमा ठूलो सपना थियो। रमेश पढेर असल मानिस बन्न चाहन्थ्यो। उसकी आमाले सधैँ उसलाई मेहनत, इमानदारी र दयाको महत्व सिकाउँथिन्।\n\nहरेक बिहान आमा उसलाई उठाउँथिन्, खाना तयार पार्थिन् र विद्यालय जानुअघि पढाइमा ध्यान दिन सम्झाउँथिन्। कहिलेकाहीँ रमेशलाई आमाको सम्झाइ झर्को लाग्थ्यो। तर आमाको मनमा छोराको भविष्यप्रतिको चिन्ता र आशा थियो।"],
-["भाग २ : संघर्षको दिन",
-"समय बित्दै गयो। एक वर्ष गाउँमा ठूलो खडेरी पर्‍यो। खेतमा अन्न राम्रोसँग उब्जिएन। परिवारको आम्दानी घट्यो र घरखर्च चलाउन कठिन भयो। रमेशले विद्यालय छोड्नुपर्ने हो कि भन्ने चिन्ता गर्न थाल्यो। आमाले उसको अनुहारमा उदासी देखिन्। उनले छोरालाई सम्झाउँदै भनिन्, 'अहिलेको कठिनाइ सधैँ रहँदैन। तिमी पढाइ नछोड। हामी मिलेर बाटो खोजौँला।'\n\nआमाले आफ्नो आवश्यकताभन्दा छोराको पढाइलाई प्राथमिकता दिइन्। उनले छोरालाई केवल सफल हुन होइन, अरूको दुःख बुझ्ने मानिस बन्न पनि सिकाइन्।"],
-["भाग ३ : नयाँ आशा",
-"विद्यालयमा नयाँ शिक्षक आए। उनले रमेशको मेहनत देखेर उसलाई पुस्तकालयका पुस्तक पढ्न प्रोत्साहन गरे। रमेशले आफ्नो समय व्यवस्थित गर्न थाल्यो। घरको काममा आमालाई सघाउँथ्यो र बाँकी समयमा पढ्थ्यो। आमाले उसको सानो प्रगतिमा पनि खुसी व्यक्त गर्थिन्।"],
-["भाग ४ : आमाको शिक्षा",
-"एक दिन रमेशले साथीको महँगो झोला देखेर आफ्नो अवस्थाप्रति दुःख मान्यो। आमाले उसलाई सम्झाइन्, 'मानिसको मूल्य उसले बोकेको झोलाले होइन, उसले बोकेको विचारले निर्धारण गर्छ।' त्यो वाक्य रमेशको मनमा गहिरो गरी बस्यो।"],
-["भाग ५ : परीक्षाको तयारी",
-"परीक्षा नजिकिँदै थियो। रमेशले नियमित अध्ययन गर्‍यो। नबुझेका कुरा शिक्षकसँग सोध्यो र साथीहरूसँग छलफल गर्‍यो। आमाले उसलाई स्वस्थ खाना, पर्याप्त आराम र आत्मविश्वासको महत्व सम्झाइन्।"],
-["भाग ६ : कठिन परीक्षा",
-"परीक्षाको दिन आयो। सुरुमा रमेश डरायो, तर आमाको हौसला सम्झेर शान्त भयो। उसले आफूले जानेका प्रश्न ध्यानपूर्वक हल गर्‍यो। परीक्षा सकेपछि उसले आफ्नो प्रयासप्रति सन्तुष्टि अनुभव गर्‍यो।"],
-["भाग ७ : नतिजाको प्रतीक्षा",
-"नतिजा आउने दिनसम्म रमेशले आमालाई घरको काममा सघायो। ऊ केवल अंकको प्रतीक्षामा बसेन; आफूले सिकेका कुरा व्यवहारमा उतार्न पनि थाल्यो।"],
-["भाग ८ : सफलताको खबर",
-"नतिजा प्रकाशित भयो। रमेश विद्यालयमा उत्कृष्ट विद्यार्थीमध्ये एक बन्यो। उसले खुसी हुँदै आमालाई खबर सुनायो। आमाको आँखामा खुसी झल्कियो। उनले छोरालाई विनम्र रहन र अझै मेहनत गर्न सम्झाइन्।"],
-["भाग ९ : सफलताको अर्थ",
-"रमेशले बुझ्यो कि सफलता केवल पुरस्कार पाउनु होइन। कठिन समयमा हार नमान्नु, परिवारको सम्मान गर्नु र अरूलाई सहयोग गर्नु पनि सफलता हो। उसले गाउँका साना बालबालिकालाई पढाइमा सहयोग गर्न थाल्यो।"],
-["भाग १० : आमाको माया अमूल्य",
-"वर्षौँपछि रमेशले आफ्नो गाउँमा पुस्तकालय स्थापना गर्ने निर्णय गर्‍यो। उद्घाटनका दिन उसले सबैभन्दा पहिले आमालाई सम्मान गर्‍यो। उसले भन्यो, 'मेरो जीवनको पहिलो शिक्षक मेरी आमा हुनुहुन्छ। उहाँले मलाई किताब पढ्न मात्र होइन, असल मानिस बन्न सिकाउनुभयो।'\n\nआमाको माया कुनै धनसँग तुलना गर्न सकिँदैन। आमाले दिएको माया, शिक्षा र प्रेरणाले मानिसको जीवनलाई सही दिशा दिन सक्छ। यही कथाको सन्देश हो—आफ्ना अभिभावकको सम्मान गरौँ र उनीहरूले सिकाएका असल गुणलाई जीवनमा अपनाऔँ।"]
-}
-],
-"कविता":[
-{
-title:"प्रकृतिको सुन्दरता",
-text:`हरियो वनको काखमा,
-चिसो हावाको स्पर्श छ।
-हिमालको सेतो शिरमाथि,
-सूर्यको सुनौलो हर्ष छ।
 
-खोलाको कलकल आवाज,
-चराको मीठो गीत।
-फूलको सुगन्ध बोकेर,
-आउँछ बिहानको शीत।
+// प्रत्येक भागमा १० हजार सामग्री
+const TOTAL = 10000;
 
-पहाड हाँस्छ हरियालीमा,
-तराई मुस्काउँछ खेतमा।
-प्रकृतिको अनुपम चित्र,
-सजिएको छ हाम्रो देशमा।
-
-नदीले जीवन बाँडिरहन्छ,
-रूखले छायाँ दिन्छ।
-पृथ्वीको हरेक कुनाले,
-हामीलाई पाठ सिकाउँछ।
-
-तर मानिसले बिर्सनु हुँदैन,
-यो धर्ती हाम्रो घर हो।
-वन, पानी र स्वच्छ हावाको,
-संरक्षण गर्नु कर्तव्य हो।
-
-आऊ सबै हातेमालो गरौँ,
-हरियाली संसार बनाऔँ।
-प्रकृतिको सुन्दर उपहारलाई,
-आउँदो पुस्ताका लागि जोगाऔँ।`
-},
-{
-title:"विद्यार्थीको सपना",
-text:`सानो मनमा ठूलो सपना,
-आँखाभरि उज्यालो।
-ज्ञानको बाटो हिँड्दै जाँदा,
-भविष्य बन्छ निरालो।
-
-किताब मेरा साथी हुन्,
-कलम मेरो आधार।
-मेहनत मेरो शक्ति हो,
-शिक्षा मेरो उपहार।
-
-कहिले कठिन पाठ आउँछ,
-कहिले गल्ती हुन्छ।
-तर निरन्तर प्रयास गर्दा,
-सफलताको ढोका खुल्छ।
-
-म देशको आशा बन्न चाहन्छु,
-मानवताको सेवक।
-सत्य, साहस र इमानदारी,
-बनून् मेरा मार्गदर्शक।`
-}
-],
-"निबन्ध":[
-{
-title:"शिक्षाको महत्व",
-text:`भूमिका
-
-शिक्षा मानिसको जीवन विकास गर्ने महत्वपूर्ण आधार हो। शिक्षाले मानिसलाई ज्ञान, सीप, विवेक र सही निर्णय गर्ने क्षमता प्रदान गर्छ। शिक्षित मानिसले आफ्नो जीवनलाई व्यवस्थित बनाउन सक्छ र समाजको विकासमा योगदान दिन सक्छ।
-
-शिक्षाको अर्थ
-
-शिक्षा भनेको विद्यालयमा किताब पढ्नु मात्र होइन। जीवनका अनुभवबाट सिक्नु, सही र गलत छुट्याउन सक्नु, अरूको सम्मान गर्नु र नयाँ सीप हासिल गर्नु पनि शिक्षा हो। परिवार, विद्यालय, समाज र वातावरण सबै मानिसका सिकाइका माध्यम हुन्।
-
-व्यक्तिगत जीवनमा शिक्षा
-
-शिक्षाले मानिसमा आत्मविश्वास बढाउँछ। पढ्न, लेख्न, सोच्न र समस्याको समाधान गर्न सिकाउँछ। शिक्षित व्यक्तिले आफ्नो अधिकार र कर्तव्य बुझ्न सक्छ। उसले स्वास्थ्य, सरसफाइ, आर्थिक व्यवस्थापन र सामाजिक सम्बन्धबारे पनि ज्ञान प्राप्त गर्छ।
-
-समाज र राष्ट्रको विकासमा शिक्षा
-
-शिक्षित नागरिक भएको समाजमा चेतना, समानता र जिम्मेवारीको भावना बढ्न सक्छ। कृषि, स्वास्थ्य, विज्ञान, प्रविधि, उद्योग र प्रशासनजस्ता क्षेत्रमा दक्ष जनशक्ति उत्पादन गर्न शिक्षाको महत्वपूर्ण भूमिका हुन्छ। देशको दिगो विकासका लागि सबै बालबालिकाले गुणस्तरीय शिक्षा पाउन आवश्यक छ।
-
-शिक्षाका चुनौती
-
-गरिबी, विद्यालयको दूरी, आवश्यक शैक्षिक सामग्रीको अभाव र असमान अवसरले कतिपय बालबालिकाको पढाइमा बाधा पुर्‍याउँछन्। यी चुनौती समाधान गर्न परिवार, विद्यालय, समुदाय र सरकारले सहकार्य गर्नुपर्छ।
-
-निष्कर्ष
-
-शिक्षा उज्ज्वल भविष्य निर्माण गर्ने आधार हो। प्रत्येक बालबालिकाले सुरक्षित र गुणस्तरीय शिक्षा पाउनुपर्छ। हामीले सिकेका ज्ञान र सीपलाई समाजको हितमा प्रयोग गर्न सके मात्र शिक्षाको वास्तविक महत्व पूरा हुन्छ।`
-}
-],
-"बालविकास":[
-{
-title:"बालबालिकाको सर्वाङ्गीण विकास",
-text:`परिचय
-
-बालबालिका परिवार र समाजको भविष्य हुन्। उनीहरूको विकास केवल शारीरिक वृद्धि मात्र होइन। शारीरिक, मानसिक, सामाजिक, भावनात्मक, भाषिक र सिर्जनात्मक पक्षको सन्तुलित विकासलाई सर्वाङ्गीण विकास भनिन्छ।
-
-शारीरिक विकास
-
-बालबालिकाको शारीरिक विकासका लागि पौष्टिक खाना, पर्याप्त निद्रा, स्वच्छ वातावरण र उमेरअनुसारको खेलकुद आवश्यक हुन्छ। दौडने, उफ्रने, चित्र बनाउने र खेलौना मिलाउने जस्ता गतिविधिले शरीरको चाल र समन्वय विकास गर्न सहयोग गर्छ।
-
-मानसिक तथा बौद्धिक विकास
-
-बालबालिकाले प्रश्न सोध्ने, वस्तु अवलोकन गर्ने, कथा सुन्ने र नयाँ कुरा खोज्ने अवसर पाउनुपर्छ। उनीहरूलाई जिज्ञासा व्यक्त गर्न प्रोत्साहन गर्दा सोच्ने र समस्या समाधान गर्ने क्षमता बढ्न सक्छ।
-
-भाषिक विकास
-
-बालबालिकासँग स्पष्ट र मायालु भाषामा कुरा गर्नु, कथा सुनाउनु, गीत गाउनु र उनीहरूलाई आफ्ना विचार व्यक्त गर्न समय दिनु भाषिक विकासका लागि उपयोगी हुन्छ।
-
-सामाजिक तथा भावनात्मक विकास
-
-साथीसँग खेल्नु, पालो पर्खनु, अरूको भावना बुझ्नु र आफ्नो भावना व्यक्त गर्नु सामाजिक तथा भावनात्मक विकासका महत्वपूर्ण पक्ष हुन्। अभिभावक र शिक्षकले बालबालिकालाई सम्मानपूर्वक सुन्नुपर्छ।
-
-खेलको महत्व
-
-खेल बालबालिकाको स्वाभाविक सिकाइको माध्यम हो। खेलबाट उनीहरूले सहकार्य, नियम पालन, कल्पनाशक्ति र आत्मविश्वास विकास गर्न सक्छन्। खेललाई केवल समय बिताउने गतिविधिका रूपमा हेर्नु हुँदैन।
-
-अभिभावक र शिक्षकको भूमिका
-
-बालबालिकालाई सुरक्षित वातावरण, माया, प्रोत्साहन र सिक्ने अवसर दिनु आवश्यक छ। उनीहरूको उमेर र क्षमताअनुसार अपेक्षा राख्नुपर्छ। अरूसँग तुलना गर्नुको सट्टा उनीहरूको आफ्नै प्रगतिलाई प्रोत्साहन गर्नुपर्छ।
-
-निष्कर्ष
-
-बालबालिकाको सर्वाङ्गीण विकासका लागि परिवार, विद्यालय र समुदायको संयुक्त भूमिका आवश्यक हुन्छ। माया, सुरक्षा, पोषण, खेल र गुणस्तरीय शिक्षाले बालबालिकालाई आत्मविश्वासी, जिम्मेवार र सिर्जनशील बन्न सहयोग गर्छ।`
-}
-]
+const categories = {
+ story:{
+  name:"📖 कथा संग्रह",
+  description:"विभिन्न विषय, पात्र र परिवेशका नेपाली कथाहरू।",
+  topics:[
+   "प्रेमकथा","भावुक कथा","पारिवारिक कथा","बालकथा",
+   "जादुई कथा","गाउँघरको कथा","मित्रताको कथा",
+   "संघर्षको कथा","प्रेरणादायी कथा","रहस्यमय कथा",
+   "राजा र रानीको कथा","गरिब केटोको कथा",
+   "आमाको माया","बाबुको संघर्ष","विद्यालयको कथा",
+   "पशुपक्षीको कथा","साहसिक कथा","ऐतिहासिक कथा",
+   "सामाजिक कथा","काल्पनिक कथा"
+  ]
+ },
+ poem:{
+  name:"🌸 कविता संग्रह",
+  description:"जीवन, प्रेम, प्रकृति र समाजका नेपाली कविताहरू।",
+  topics:[
+   "प्रेम कविता","आमाको कविता","बाबाको कविता",
+   "देशभक्ति कविता","प्रकृति कविता","बाल कविता",
+   "जीवन कविता","मित्रता कविता","दुःखको कविता",
+   "खुसीको कविता","विद्यालय कविता","वर्षा कविता",
+   "पहाडको कविता","गाउँको कविता","फूलको कविता",
+   "समयको कविता","सपना कविता","मानवता कविता",
+   "चाडपर्व कविता","प्रेरणादायी कविता"
+  ]
+ },
+ essay:{
+  name:"✍️ निबन्ध संग्रह",
+  description:"शिक्षा, स्वास्थ्य, समाज, विज्ञान र जीवनका निबन्धहरू।",
+  topics:[
+   "शिक्षाको महत्त्व","वातावरण संरक्षण","मेरो देश नेपाल",
+   "स्वास्थ्य र सरसफाइ","विज्ञान र प्रविधि",
+   "समयको महत्त्व","अनुशासन","इन्टरनेटको उपयोग",
+   "सामाजिक सञ्जाल","विद्यालय जीवन",
+   "कृषिको महत्त्व","पर्यटनको महत्त्व",
+   "वनजंगल संरक्षण","जलवायु परिवर्तन",
+   "बाल अधिकार","महिला शिक्षा","खेलकुद",
+   "मेरो गाउँ","राष्ट्रप्रेम","मानवता"
+  ]
+ },
+ bodh:{
+  name:"💡 बोधकथा संग्रह",
+  description:"नैतिक शिक्षा र जीवन उपयोगी सन्देश दिने बोधकथाहरू।",
+  topics:[
+   "इमानदारीको फल","मेहनतको फल","मित्रताको शक्ति",
+   "बुद्धिमानीको कथा","लोभको परिणाम","सत्यको जित",
+   "समयको सदुपयोग","आमाबाबुको सम्मान",
+   "एकताको शक्ति","दयाको महत्त्व",
+   "सहयोगको भावना","धैर्यको फल",
+   "घमण्डको परिणाम","असल व्यवहार",
+   "शिक्षाको महत्त्व","सानो सहयोग ठूलो परिणाम",
+   "वचनको महत्त्व","क्षमा र दया",
+   "असल मानिस","जीवनको पाठ"
+ ]
+ }
 };
 
-let currentCategory="कथा";
+let currentCategory="story";
+let currentIndex=0;
+let fontSize=18;
+let searchResults=null;
 
-function renderCategories(){
- const box=document.getElementById("categories");
- Object.keys(library).forEach(category=>{
-  const btn=document.createElement("button");
-  btn.textContent=category;
-  btn.onclick=()=>{
-   currentCategory=category;
-   renderTopics();
-  };
-  box.appendChild(btn);
- });
+// फरक सामग्री बनाउन प्रयोग गरिने शब्दहरू
+const names=[
+ "राम","सीता","मोहन","गीता","अर्जुन",
+ "माया","सुरज","राधा","कृष्ण","सुमन",
+ "आशा","निरज","कमला","विवेक","अनिता"
+];
+
+const places=[
+ "एउटा सुन्दर नेपाली गाउँमा",
+ "पहाडको काखमा रहेको सानो बस्तीमा",
+ "हरियालीले भरिएको गाउँमा",
+ "एउटा रमाइलो विद्यालयमा",
+ "नदीको किनारमा रहेको गाउँमा",
+ "हिमालको नजिकै रहेको बस्तीमा",
+ "एउटा शान्त सहरमा",
+ "वनजंगलले घेरिएको गाउँमा"
+];
+
+const lessons=[
+ "मेहनत कहिल्यै खेर जाँदैन भन्ने कुरा",
+ "सत्य र इमानदारीको महत्त्व",
+ "अरूलाई सहयोग गर्नु नै मानवताको चिनारी हो",
+ "धैर्य राख्ने मानिसले सफलता पाउन सक्छ",
+ "आमाबाबुको सम्मान गर्नु हाम्रो कर्तव्य हो",
+ "ज्ञानभन्दा ठूलो सम्पत्ति अरू हुँदैन",
+ "एकतामा ठूलो शक्ति हुन्छ",
+ "समयको सही उपयोग गर्नुपर्छ"
+];
+
+function nepaliNumber(number){
+ return String(number).replace(/\d/g,d=>"०१२३४५६७८९"[d]);
 }
 
-function renderTopics(){
- const q=document.getElementById("search").value.toLowerCase();
- const box=document.getElementById("topics");
- box.innerHTML="";
- library[currentCategory]
- .filter(item=>item.title.toLowerCase().includes(q))
- .forEach(item=>{
-  const btn=document.createElement("button");
-  btn.className="topic";
-  btn.textContent=item.title;
-  btn.onclick=()=>showArticle(item);
-  box.appendChild(btn);
- });
+function getTopic(index){
+ const list=categories[currentCategory].topics;
+ return list[index % list.length];
 }
 
-function showArticle(item){
- const box=document.getElementById("article");
- box.innerHTML="";
- const title=document.createElement("h2");
- title.textContent=item.title;
- box.appendChild(title);
+function createTitle(index){
+ const topic=getTopic(index);
+ const person=names[index % names.length];
+ const endings=[
+  "को अनौठो यात्रा",
+  "को जीवनकथा",
+  "र एउटा नयाँ सपना",
+  "को संघर्ष",
+  "को सम्झना",
+  "र सफलताको बाटो",
+  "को प्रेरणादायी अनुभव",
+  "को सुन्दर संसार"
+ ];
+ return topic+" : "+person+endings[index % endings.length];
+}
 
- if(currentCategory==="कथा"){
-  item.parts.forEach(part=>{
-   const heading=document.createElement("h3");
-   heading.textContent=part[0];
-   const paragraph=document.createElement("p");
-   paragraph.textContent=part[1];
-   box.append(heading,paragraph);
-  });
- }else{
-  const paragraph=document.createElement("p");
-  paragraph.textContent=item.text;
-  box.appendChild(paragraph);
+function createStory(index){
+ const person=names[index % names.length];
+ const other=names[(index+3)%names.length];
+ const place=places[index % places.length];
+ const lesson=lessons[index % lessons.length];
+
+ const paragraphs=[
+ `${place} ${person} नाम गरेका एक पात्र बस्थे। उनको जीवनमा धेरै सपना थिए। उनी आफ्नो परिवार र समाजलाई माया गर्थे। तर उनको अगाडि धेरै चुनौतीहरू पनि थिए।`,
+ `${person} सधैँ केही नयाँ सिक्न चाहन्थे। उनी बिहान उठेर आफ्नो काम गर्थे र आफ्नो लक्ष्य प्राप्त गर्न मेहनत गर्थे। कहिलेकाहीँ परिस्थिति कठिन हुन्थ्यो, तर उनी आशा छोड्दैनथे।`,
+ `एक दिन उनको जीवनमा एउटा नयाँ घटना घट्यो। त्यही घटनाले उनलाई जीवनलाई फरक तरिकाले बुझ्ने अवसर दियो। उनले आफ्नो नजिकका मानिसहरूसँग सल्लाह लिए र समस्या समाधान गर्ने प्रयास गरे।`,
+ `त्यसपछि उनको भेट ${other} सँग भयो। उनीहरूबीच कुराकानी भयो। दुवैले एकअर्काका विचार सुने र मिलेर अगाडि बढ्ने निर्णय गरे।`,
+ `समय बित्दै जाँदा ${person} ले धेरै कुरा सिके। गल्तीबाट पाठ सिक्नु, अरूको भावना बुझ्नु र सही बाटो रोज्नु कति महत्त्वपूर्ण रहेछ भन्ने उनले महसुस गरे।`,
+ `उनको यात्रामा कहिले खुसी आए, कहिले निराशा पनि आयो। तर हरेक अनुभवले उनलाई अझ परिपक्व बनाउँदै लग्यो। उनले आफ्नो परिवार, साथी र समाजको सहयोगको महत्त्व बुझे।`,
+ `अन्त्यमा ${person} ले आफ्नो उद्देश्यतर्फ एउटा महत्त्वपूर्ण पाइला चाल्न सफल भए। उनको अनुभवले अरूलाई पनि राम्रो काम गर्न प्रेरित गर्‍यो।`,
+ `यस कथाबाट हामीले बुझ्न सक्छौँ कि ${lesson}। जीवनमा सफलता पाउन असल सोच, निरन्तर प्रयास र धैर्य आवश्यक हुन्छ।`
+ ];
+
+ // लामो पढाइका लागि विस्तारित अनुच्छेद
+ for(let i=0;i<4;i++){
+  paragraphs.push(
+   `${person} को अनुभवबाट अर्को कुरा पनि सिक्न सकिन्छ। ${places[(index+i+2)%places.length]} मानिसहरूले एकअर्कालाई सम्मान गरे भने समाज अझ राम्रो बन्न सक्छ। ${lesson} भन्ने विचारलाई व्यवहारमा उतार्नु आवश्यक छ।`
+  );
  }
- window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+
+ return paragraphs;
 }
 
-document.getElementById("search").addEventListener("input",renderTopics);
-renderCategories();
-renderTopics();
+function createPoem(index){
+ const topic=getTopic(index);
+ const person=names[index%names.length];
+
+ const verses=[
+  `${topic} जीवनको एउटा मीठो भाव हो,`,
+  `मनभित्र लुकेको सुन्दर स्वभाव हो।`,
+  `सपनाको बाटोमा अघि बढ्दै जाऊ,`,
+  `आशाको उज्यालो सधैँ मनमा सजाऊ।`,
+  ``,
+  `${person} का आँखामा नयाँ सपना छन्,`,
+  `मनभित्र हजारौँ मीठा भावना छन्।`,
+  `समयसँगै जीवन बदलिँदै जान्छ,`,
+  `मेहनत गर्ने मनले लक्ष्य पहिल्याउँछ।`,
+  ``,
+  `फूलझैँ मुस्कान संसारमा छरौँ,`,
+  `मायाले सबैको मन जोड्दै अघि बढौँ।`,
+  `सत्यको बाटो कहिल्यै नछोडौँ,`,
+  `असल कर्मले सुन्दर भविष्य जोडौँ।`,
+  ``,
+  `जीवन छोटो छ, सपना ठूला छन्,`,
+  `आशाका किरणहरू अझै खुला छन्।`,
+  `आजको प्रयास भोलिको आधार बनोस्,`,
+  `हरेक मनमा खुसीको संसार बसोस्।`
+ ];
+
+ return verses;
+}
+
+function createEssay(index){
+ const topic=getTopic(index);
+ const person=names[index%names.length];
+
+ return [
+  `${topic} हाम्रो जीवनसँग जोडिएको महत्त्वपूर्ण विषय हो। यसले व्यक्ति, परिवार र समाजमा ठूलो प्रभाव पार्छ। कुनै पनि विषयलाई राम्रोसँग बुझ्न त्यसको अर्थ, आवश्यकता र उपयोगिताबारे जानकारी हुनु आवश्यक छ।`,
+  `यस विषयको महत्त्व हाम्रो दैनिक जीवनमा देख्न सकिन्छ। मानिसले आफ्नो व्यवहार र सोचमा सकारात्मक परिवर्तन ल्याउन सके समाजमा पनि राम्रो प्रभाव पर्न सक्छ।`,
+  `${person} जस्ता विद्यार्थी तथा युवाहरूले यस विषयलाई बुझेर व्यवहारमा लागू गर्नुपर्छ। ज्ञान प्राप्त गर्नु मात्र पर्याप्त हुँदैन, त्यसलाई सही तरिकाले प्रयोग गर्नु पनि आवश्यक हुन्छ।`,
+  `यसका केही चुनौतीहरू पनि छन्। जानकारीको अभाव, लापरवाही र गलत सोचले समस्या निम्त्याउन सक्छ। त्यसैले परिवार, विद्यालय र समाजले मिलेर सकारात्मक वातावरण बनाउनुपर्छ।`,
+  `यस विषयमा सरकार, शिक्षक, अभिभावक र नागरिक सबैको भूमिका महत्त्वपूर्ण हुन्छ। सबैले आफ्नो जिम्मेवारी पूरा गरेमा राम्रो परिवर्तन सम्भव हुन्छ।`,
+  `अन्त्यमा भन्नुपर्दा, ${topic} हाम्रो वर्तमान र भविष्य दुवैका लागि उपयोगी विषय हो। हामी सबैले यसको महत्त्व बुझेर आफ्नो जीवनमा सकारात्मक व्यवहार अपनाउनुपर्छ।`
+ ];
+}
+
+function createBodh(index){
+ const person=names[index%names.length];
+ const other=names[(index+4)%names.length];
+ const lesson=lessons[index%lessons.length];
+
+ return [
+  `धेरै पहिलेको कुरा हो। ${places[index%places.length]} ${person} नाम गरेका एक व्यक्ति बस्थे। उनी सामान्य जीवन बिताउँथे र आफ्नो परिवारलाई माया गर्थे।`,
+  `उनको साथी ${other} थिए। उनीहरू सँगै काम गर्थे र एकअर्कालाई सहयोग गर्थे। तर एक दिन उनीहरूको अगाडि एउटा समस्या आयो।`,
+  `${person} ले हतारमा निर्णय नगरी समस्याबारे राम्रोसँग सोच्ने विचार गरे। उनले सबैको कुरा सुने र समाधान खोज्न थाले।`,
+  `केही समयपछि उनीहरूले मिलेर एउटा राम्रो उपाय निकाले। उनीहरूको धैर्य, समझदारी र सहयोगले समस्या समाधान भयो।`,
+  `त्यस दिन उनीहरूले एउटा ठूलो कुरा सिके। मानिसले कठिन परिस्थितिमा पनि सही सोच र असल व्यवहार अपनाउनुपर्छ।`,
+  `यस कथाबाट प्राप्त शिक्षा: ${lesson}।`
+ ];
+}
+
+function getContent(index){
+ const topic=getTopic(index);
+ const title=createTitle(index);
+ let paragraphs=[];
+
+ if(currentCategory==="story"){
+  paragraphs=createStory(index);
+ }
+ if(currentCategory==="poem"){
+  paragraphs=createPoem(index);
+ }
+ if(currentCategory==="essay"){
+  paragraphs=createEssay(index);
+ }
+ if(currentCategory==="bodh"){
+  paragraphs=createBodh(index);
+ }
+
+ return {topic,title,paragraphs};
+}
+
+function render(){
+ const data=getContent(currentIndex);
+ const reader=document.getElementById("reader");
+
+ let html=`<h2>${data.title}</h2>`;
+ html+=`<p style="text-align:center;color:#98733e">
+ विषय: ${data.topic}
+ </p>`;
+
+ if(currentCategory==="poem"){
+  html+=`<div style="text-align:center;white-space:pre-line;line-height:2.2">`;
+  html+=data.paragraphs.join("\n");
+  html+=`</div>`;
+ }else{
+  data.paragraphs.forEach((p,i)=>{
+   html+=`<p>${p}</p>`;
+  });
+ }
+
+ html+=`<h3 style="text-align:center">— समाप्त —</h3>`;
+
+ reader.innerHTML=html;
+ reader.style.fontSize=fontSize+"px";
+
+ document.getElementById("itemNumber").innerText=
+ "सामग्री नम्बर: "+nepaliNumber(currentIndex+1)+
+ " / "+nepaliNumber(TOTAL);
+
+ document.getElementById("description").innerText=
+ categories[currentCategory].description+
+ " | विषय: "+data.topic;
+
+ document.getElementById("resultInfo").innerText=
+ "हाल देखाइएको सामग्री: "+nepaliNumber(currentIndex+1);
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function changeCategory(category,button){
+ currentCategory=category;
+ currentIndex=0;
+ searchResults=null;
+
+ document.querySelectorAll("nav button").forEach(b=>{
+  b.classList.remove("active");
+ });
+ button.classList.add("active");
+
+ document.getElementById("categoryHeading").innerText=
+ categories[category].name;
+
+ document.getElementById("searchInput").value="";
+ loadTopics();
+ render();
+}
+
+function loadTopics(){
+ const select=document.getElementById("topicSelect");
+ select.innerHTML="";
+
+ categories[currentCategory].topics.forEach((topic,index)=>{
+  const option=document.createElement("option");
+  option.value=index;
+  option.textContent=topic;
+  select.appendChild(option);
+ });
+}
+
+function resetReader(){
+ const topicIndex=Number(document.getElementById("topicSelect").value);
+ currentIndex=topicIndex;
+ searchResults=null;
+ render();
+}
+
+function nextItem(){
+ if(currentIndex<TOTAL-1){
+  currentIndex++;
+ }else{
+  currentIndex=0;
+ }
+ render();
+}
+
+function previousItem(){
+ if(currentIndex>0){
+  currentIndex--;
+ }else{
+  currentIndex=TOTAL-1;
+ }
+ render();
+}
+
+function randomItem(){
+ currentIndex=Math.floor(Math.random()*TOTAL);
+ render();
+}
+
+function searchContent(){
+ const query=document.getElementById("searchInput")
+ .value.trim().toLowerCase();
+
+ if(!query){
+  alert("कृपया खोज्ने शब्द लेख्नुहोस्।");
+  return;
+ }
+
+ let found=-1;
+
+ for(let i=0;i<TOTAL;i++){
+  const data=getContent(i);
+  const searchable=(
+   data.title+" "+data.topic+" "+data.paragraphs.join(" ")
+  ).toLowerCase();
+
+  if(searchable.includes(query)){
+   found=i;
+   break;
+  }
+ }
+
+ if(found>=0){
+  currentIndex=found;
+  render();
+  document.getElementById("resultInfo").innerText=
+   "खोजिएको सामग्री भेटियो।";
+ }else{
+  alert("माफ गर्नुहोस्, यो शब्दसँग मिल्ने सामग्री भेटिएन।");
+ }
+}
+
+function increaseFont(amount){
+ fontSize=Math.max(13,Math.min(30,fontSize+amount));
+ document.getElementById("reader").style.fontSize=
+ fontSize+"px";
+}
+
+// सुरु गर्दा कथा संग्रह खोल्ने
+loadTopics();
+render();
+
 </script>
 </body>
 </html>
