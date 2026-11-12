@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Cyber Academy</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+<a href="index.html" class="brand">🛡️ Cyber Academy</a>
+<nav>
+<a href="index.html">Home</a>
+<a href="register.html">Register</a>
+</nav>
+</header>
+
+<div class="toolbar">
+<select id="themeSelect">
+<option value="dark">Dark</option>
+<option value="light">Light</option>
+<option value="blue">Blue</option>
+<option value="pink">Pink</option>
+<option value="yellow">Yellow</option>
+<option value="green">Green</option>
+</select>
+<select id="languageSelect"></select>
+</div>
+
+<main>
+<section class="section">
+<form class="form-card" id="loginForm">
+
+<h1>Welcome Back</h1>
+
+<label>Email</label>
+<input type="email" required>
+
+<label>Password</label>
+<input type="password" required>
+
+<button type="submit" class="btn">Login</button>
+
+<p>Don't have an account?
+<a href="register.html">Register</a>
+</p>
+
+<p>Demo interface. Real authentication requires a secure backend.</p>
+
+</form>
+</section>
+</main>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
